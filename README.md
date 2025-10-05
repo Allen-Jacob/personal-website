@@ -30,12 +30,9 @@ Linktree/
 Ouvrez [index.html](index.html) et modifiez :
 
 **Photo de profil** (ligne ~35) :
-```html
-<img src="https://via.placeholder.com/150" alt="Jacob Allen" id="profilePhoto">
-```
 Remplacez par votre propre image :
 ```html
-<img src="./images/ma-photo.jpg" alt="Jacob Allen" id="profilePhoto">
+<img src="./img/ma-photo.jpg" alt="Jacob Allen" id="profilePhoto">
 ```
 
 **Description** (ligne ~43) :
@@ -51,7 +48,7 @@ Dans [index.html](index.html), section `<!-- Boutons de liens -->` (lignes ~48-8
 
 ```html
 <!-- Site principal -->
-<a href="https://jacobalone.ca" class="link-button" target="_blank">
+<a href="https://yourwebsite.ca" class="link-button" target="_blank">
     <i class="fas fa-globe"></i>
     <span>Site Principal</span>
     <i class="fas fa-arrow-right arrow-icon"></i>
@@ -98,18 +95,6 @@ npx http-server -p 8000
 
 Puis ouvrez http://localhost:8000
 
-### Option 3 : Docker (production)
-
-#### Prérequis
-- [Docker](https://www.docker.com/get-started) installé sur votre machine
-
-#### Build de l'image
-
-```bash
-# Construire l'image Docker
-docker build -t linktree-jacob .
-```
-
 #### Lancer le conteneur
 
 ```bash
@@ -141,45 +126,6 @@ docker rm my-linktree
 docker rmi linktree-jacob
 ```
 
-### Option 4 : Déploiement cloud
-
-#### Netlify / Vercel (gratuit)
-
-1. Créez un compte sur [Netlify](https://netlify.com) ou [Vercel](https://vercel.com)
-2. Glissez-déposez le dossier du projet
-3. Votre site sera en ligne en quelques secondes !
-
-#### Docker Hub
-
-```bash
-# Tag de l'image
-docker tag linktree-jacob votre-username/linktree-jacob:latest
-
-# Push vers Docker Hub
-docker push votre-username/linktree-jacob:latest
-```
-
-## 🎨 Ajout d'images
-
-Pour ajouter votre photo de profil ou d'autres images :
-
-1. Créez un dossier `images/` :
-```bash
-mkdir images
-```
-
-2. Placez votre photo (ex: `profile.jpg`) dans ce dossier
-
-3. Décommentez la ligne dans le [Dockerfile](Dockerfile) :
-```dockerfile
-COPY images/ /usr/share/nginx/html/images/
-```
-
-4. Modifiez [index.html](index.html) :
-```html
-<img src="./images/profile.jpg" alt="Jacob Allen">
-```
-
 ## 🔧 Technologies utilisées
 
 - **HTML5** : Structure sémantique
@@ -197,8 +143,8 @@ Libre d'utilisation. Personnalisez à votre guise !
 ## 🤝 Support
 
 Pour toute question ou suggestion :
-- 🌐 Site : https://jacobalone.ca
-- 📧 Email : [votre-email]
+- 🌐 Site : https://jacoballen.ca
+- 📧 Email : [jacob@jacoballen.ca]
 
 ---
 
