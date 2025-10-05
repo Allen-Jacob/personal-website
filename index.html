@@ -6,6 +6,23 @@
     <title>Jacob Allen - Links</title>
     <meta name="description" content="Tous mes liens en un seul endroit">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jacoballen.ca">
+    <meta property="og:title" content="Jacob Allen - Links">
+    <meta property="og:description" content="Tous mes liens en un seul endroit - Développeur passionné">
+    <meta property="og:image" content="https://jacoballen.ca/img/avatar.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jacoballen.ca">
+    <meta property="twitter:title" content="Jacob Allen - Links">
+    <meta property="twitter:description" content="Tous mes liens en un seul endroit - Développeur passionné">
+    <meta property="twitter:image" content="https://jacoballen.ca/img/avatar.jpg">
+
     <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -17,20 +34,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Arrière-plan animé avec vagues et bulles -->
-    <div class="animated-background">
-        <div class="wave wave1"></div>
-        <div class="wave wave2"></div>
-        <div class="wave wave3"></div>
-        <div class="bubbles-container" id="bubblesContainer"></div>
-    </div>
+    <!-- Points animés dans le fond -->
+    <div class="stars" id="stars"></div>
 
     <!-- Contenu principal -->
     <div class="container">
         <div class="profile-card">
             <!-- Photo de profil - Remplacez par votre photo -->
             <div class="profile-image">
-                <img src="/img/avatar.jpg" alt="Photo de Jacob Allen">
+                <img src="./img/avatar.jpg" alt="Photo de Jacob Allen">
             </div>
 
             <!-- Nom -->
@@ -40,6 +52,22 @@
             <p class="profile-description">
                 Développeur passionné par la création d'expériences web modernes et innovantes.
             </p>
+
+            <!-- Réseaux sociaux -->
+            <div class="social-links">
+                <a href="https://github.com/votre-username" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/votre-profil" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://twitter.com/votre-username" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com/votre-username" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
 
             <!-- Boutons de liens - Modifiez les URLs ci-dessous -->
             <div class="links-container">

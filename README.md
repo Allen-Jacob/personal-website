@@ -144,7 +144,7 @@ Libre d'utilisation. Personnalisez à votre guise !
 
 Pour toute question ou suggestion :
 - 🌐 Site : https://jacoballen.ca
-- 📧 Email : [jacob@jacoballen.ca]
+- 📧 Email : [contact@jacoballen.ca]
 
 ---
 
