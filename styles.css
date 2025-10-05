@@ -1,0 +1,373 @@
+/* ============================================
+   VARIABLES ET RESET
+   ============================================ */
+:root {
+    /* Couleurs principales - Thème bleu sombre */
+    --primary-bg: #0a1628;
+    --secondary-bg: #132a47;
+    --card-bg: rgba(19, 42, 71, 0.7);
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+    --accent-blue: #3b82f6;
+    --accent-cyan: #06b6d4;
+    --accent-purple: #8b5cf6;
+
+    /* Effets */
+    --glow-color: rgba(59, 130, 246, 0.4);
+    --border-radius: 16px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ============================================
+   ARRIÈRE-PLAN ANIMÉ
+   ============================================ */
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0a1628 0%, #132a47 50%, #1a3a5c 100%);
+}
+
+/* Vagues animées */
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 300px;
+    opacity: 0.15;
+    animation: wave-animation 15s ease-in-out infinite;
+}
+
+.wave1 {
+    background: linear-gradient(to right, transparent, var(--accent-blue), transparent);
+    border-radius: 50% 50% 0 0;
+    animation-delay: 0s;
+}
+
+.wave2 {
+    background: linear-gradient(to right, transparent, var(--accent-cyan), transparent);
+    border-radius: 45% 55% 0 0;
+    animation-delay: -5s;
+    height: 250px;
+}
+
+.wave3 {
+    background: linear-gradient(to right, transparent, var(--accent-purple), transparent);
+    border-radius: 55% 45% 0 0;
+    animation-delay: -10s;
+    height: 200px;
+}
+
+@keyframes wave-animation {
+    0%, 100% {
+        transform: translateX(0) translateY(0) scaleY(1);
+    }
+    50% {
+        transform: translateX(-25%) translateY(-20px) scaleY(0.8);
+    }
+}
+
+/* Conteneur de bulles */
+.bubbles-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: float-up 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.4;
+    }
+    90% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(-100px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   CONTENEUR PRINCIPAL
+   ============================================ */
+.container {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+.profile-card {
+    width: 100%;
+    max-width: 480px;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 3rem 2rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: fade-in-up 0.6s ease-out;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   PROFIL
+   ============================================ */
+.profile-image {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    position: relative;
+}
+
+.profile-image::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-cyan));
+    border-radius: 50%;
+    z-index: -1;
+    animation: rotate-gradient 3s linear infinite;
+}
+
+@keyframes rotate-gradient {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--primary-bg);
+    display: block;
+}
+
+.profile-name {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #ffffff, var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.profile-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================
+   BOUTONS DE LIENS
+   ============================================ */
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.link-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.link-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+    transition: var(--transition);
+}
+
+.link-button:hover::before {
+    left: 100%;
+}
+
+.link-button:hover {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--glow-color);
+}
+
+.link-button:active {
+    transform: translateY(0);
+}
+
+.link-button i:first-child {
+    font-size: 1.5rem;
+    width: 24px;
+    text-align: center;
+    color: var(--accent-blue);
+}
+
+.link-button span {
+    flex: 1;
+}
+
+.arrow-icon {
+    font-size: 1rem;
+    opacity: 0.6;
+    transition: var(--transition);
+}
+
+.link-button:hover .arrow-icon {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.footer p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+    .profile-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .profile-name {
+        font-size: 1.75rem;
+    }
+
+    .profile-description {
+        font-size: 0.9375rem;
+    }
+
+    .link-button {
+        padding: 0.875rem 1.25rem;
+        font-size: 0.9375rem;
+    }
+
+    .link-button i:first-child {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .container {
+        padding: 1rem 0.75rem;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-name {
+        font-size: 1.5rem;
+    }
+}
+
+/* ============================================
+   ANIMATIONS D'ENTRÉE POUR LES BOUTONS
+   ============================================ */
+.link-button {
+    animation: fade-in-slide 0.5s ease-out backwards;
+}
+
+.link-button:nth-child(1) { animation-delay: 0.1s; }
+.link-button:nth-child(2) { animation-delay: 0.2s; }
+.link-button:nth-child(3) { animation-delay: 0.3s; }
+.link-button:nth-child(4) { animation-delay: 0.4s; }
+.link-button:nth-child(5) { animation-delay: 0.5s; }
+.link-button:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fade-in-slide {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
