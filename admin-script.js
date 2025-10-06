@@ -122,8 +122,8 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Configuration du mot de passe
-const ADMIN_PASSWORD = 'admin123'; // Changez ce mot de passe !
+// Configuration du mot de passe (peut être défini via variable d'environnement)
+const ADMIN_PASSWORD = window.ENV?.ADMIN_PASSWORD || 'admin123';
 
 // Vérifier l'authentification
 function checkAuth() {

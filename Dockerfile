@@ -22,6 +22,9 @@ COPY admin.html /usr/share/nginx/html/
 COPY admin-styles.css /usr/share/nginx/html/
 COPY admin-script.js /usr/share/nginx/html/
 
+# Copier le fichier de configuration (env.js)
+COPY env.js /usr/share/nginx/html/
+
 # Copier le dossier d'images
 COPY img/ /usr/share/nginx/html/img/
 

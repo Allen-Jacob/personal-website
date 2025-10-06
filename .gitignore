@@ -1,0 +1,13 @@
+# Variables d'environnement (contient le mot de passe admin)
+env.js
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
