@@ -5,9 +5,9 @@
     --bg-space: #000000;
     --text-primary: #ffffff;
     --text-secondary: #b4b4b4;
-    --button-bg: #ffffff;
-    --button-text: #000000;
-    --button-hover: #f0f0f0;
+    --button-bg: rgba(255, 255, 255, 0.12);
+    --button-text: #ffffff;
+    --button-hover: rgba(255, 255, 255, 0.18);
     --border-radius: 8px;
     --transition: all 0.2s ease;
 }
@@ -163,7 +163,7 @@ body {
     gap: 0.5rem;
     padding: 1rem 1.5rem;
     background: var(--button-bg);
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--border-radius);
     color: var(--button-text);
     text-decoration: none;
@@ -174,7 +174,8 @@ body {
 }
 
 .link-button:hover {
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    background: var(--button-hover);
+    border-color: rgba(255, 255, 255, 0.25);
     transform: scale(1.04);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
@@ -189,7 +190,8 @@ body {
 }
 
 .link-button span {
-    flex: 0;
+    flex: 1;
+    text-align: left;
 }
 
 .arrow-icon {
