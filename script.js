@@ -28,15 +28,30 @@ function createStars() {
 }
 
 // Système de tracking des clics
-function trackClick(buttonName) {
-    // Récupérer les stats existantes
-    let stats = JSON.parse(localStorage.getItem('linkStats') || '{}');
-
-    // Incrémenter le compteur pour ce bouton
-    stats[buttonName] = (stats[buttonName] || 0) + 1;
-
-    // Sauvegarder
-    localStorage.setItem('linkStats', JSON.stringify(stats));
+async function trackClick(buttonName) {
+    try {
+        // Envoyer à l'API si disponible
+        if (window.ENV?.API_URL) {
+            await fetch(`${window.ENV.API_URL}/clicks`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ linkName: buttonName })
+            });
+        } else {
+            // Fallback sur localStorage si pas d'API
+            let stats = JSON.parse(localStorage.getItem('linkStats') || '{}');
+            stats[buttonName] = (stats[buttonName] || 0) + 1;
+            localStorage.setItem('linkStats', JSON.stringify(stats));
+        }
+    } catch (error) {
+        console.error('Error tracking click:', error);
+        // Fallback sur localStorage en cas d'erreur
+        let stats = JSON.parse(localStorage.getItem('linkStats') || '{}');
+        stats[buttonName] = (stats[buttonName] || 0) + 1;
+        localStorage.setItem('linkStats', JSON.stringify(stats));
+    }
 }
 
 // Initialiser le tracking sur tous les boutons

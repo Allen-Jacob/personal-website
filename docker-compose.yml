@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # Frontend Nginx
+  frontend:
+    build: .
+    container_name: linktree-frontend
+    ports:
+      - "8080:80"
+    networks:
+      - linktree-network
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  # API Node.js
+  api:
+    build: ./api
+    container_name: linktree-api
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/linktree-analytics
+      - PORT=3000
+      - ALLOWED_ORIGINS=http://localhost:8080,https://jacoballen.ca
+    networks:
+      - linktree-network
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+
+  # MongoDB
+  mongodb:
+    image: mongo:7-jammy
+    container_name: linktree-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - linktree-network
+    restart: unless-stopped
+
+networks:
+  linktree-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+    driver: local

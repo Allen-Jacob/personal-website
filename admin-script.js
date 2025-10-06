@@ -23,7 +23,36 @@ function createStars() {
 }
 
 // Charger et afficher les statistiques
-function loadStats() {
+async function loadStats() {
+    try {
+        // Essayer de charger depuis l'API
+        if (window.ENV?.API_URL) {
+            const response = await fetch(`${window.ENV.API_URL}/stats`);
+
+            if (response.ok) {
+                const data = await response.json();
+
+                // Mettre à jour les cartes de résumé
+                document.getElementById('totalClicks').textContent = data.totalClicks.toLocaleString();
+                document.getElementById('activeLinks').textContent = data.linksCount;
+
+                // Afficher le tableau
+                displayStatsTable(data.stats, data.totalClicks);
+                return;
+            }
+        }
+
+        // Fallback sur localStorage
+        loadStatsFromLocalStorage();
+    } catch (error) {
+        console.error('Error loading stats from API:', error);
+        // Fallback sur localStorage
+        loadStatsFromLocalStorage();
+    }
+}
+
+// Fallback: charger depuis localStorage
+function loadStatsFromLocalStorage() {
     const stats = JSON.parse(localStorage.getItem('linkStats') || '{}');
     const statsArray = Object.entries(stats).map(([name, clicks]) => ({
         name,
@@ -98,13 +127,39 @@ function refreshStats() {
 }
 
 // Réinitialiser les statistiques
-function resetStats() {
-    if (confirm('Êtes-vous sûr de vouloir réinitialiser toutes les statistiques ? Cette action est irréversible.')) {
+async function resetStats() {
+    if (!confirm('Êtes-vous sûr de vouloir réinitialiser toutes les statistiques ? Cette action est irréversible.')) {
+        return;
+    }
+
+    try {
+        // Essayer de réinitialiser via l'API
+        if (window.ENV?.API_URL) {
+            const response = await fetch(`${window.ENV.API_URL}/stats`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ confirm: 'RESET_ALL_STATS' })
+            });
+
+            if (response.ok) {
+                alert('Statistiques réinitialisées avec succès !');
+                loadStats();
+                return;
+            }
+        }
+
+        // Fallback sur localStorage
         localStorage.removeItem('linkStats');
         loadStats();
-
-        // Feedback visuel
-        alert('Statistiques réinitialisées avec succès !');
+        alert('Statistiques locales réinitialisées avec succès !');
+    } catch (error) {
+        console.error('Error resetting stats:', error);
+        // Fallback sur localStorage
+        localStorage.removeItem('linkStats');
+        loadStats();
+        alert('Statistiques locales réinitialisées avec succès !');
     }
 }
 
