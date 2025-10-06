@@ -1,5 +1,10 @@
 # Variables d'environnement (contient le mot de passe admin)
 env.js
+api/.env
+
+# Dependencies
+node_modules/
+api/node_modules/
 
 # Fichiers système
 .DS_Store
@@ -7,7 +12,15 @@ Thumbs.db
 
 # Logs
 *.log
+npm-debug.log*
 
 # IDE
 .vscode/
 .idea/
+
+# Docker
+Dockerfile.old
+
+# Build
+dist/
+build/

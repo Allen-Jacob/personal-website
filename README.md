@@ -1,140 +1,191 @@
 # 🔗 Linktree Personnel - Jacob Allen
 
-Site web moderne de type Linktree/Bento avec un design bleu sombre, des animations fluides (vagues et bulles) et une mise en page responsive.
+Site web Linktree épuré avec fond spatial noir, analytics MongoDB et page admin protégée.
 
 ## ✨ Fonctionnalités
 
-- 🎨 **Design moderne** avec thème bleu sombre
-- 🌊 **Animations fluides** : vagues en arrière-plan et bulles colorées
-- 📱 **Responsive** : adapté mobile et desktop
-- ✨ **Effets interactifs** : hover glow, parallaxe au survol, animations au clic
-- 🚀 **Déploiement facile** avec Docker et Nginx
-- 🔧 **Facile à personnaliser** : code propre et bien commenté
+- 🎨 **Design minimaliste** avec fond spatial noir et étoiles animées
+- 📊 **Analytics centralisés** avec MongoDB - tracking multi-appareils
+- 🔐 **Page admin protégée** par mot de passe avec statistiques détaillées
+- 📱 **100% Responsive** - fonctionne sur tous les appareils
+- 🚀 **Déploiement facile** avec Docker (Frontend + API + Nginx)
+- ⚡ **Performances optimisées** - un seul conteneur pour tout
 
 ## 📁 Structure du projet
 
 ```
 Linktree/
-├── index.html          # Structure HTML principale
-├── styles.css          # Styles et animations
-├── script.js           # Interactions JavaScript
-├── Dockerfile          # Configuration Docker
-├── .dockerignore       # Fichiers exclus de Docker
-└── README.md           # Ce fichier
+├── index.html              # Page principale
+├── admin.html              # Page d'administration (protégée)
+├── styles.css              # Styles du site
+├── admin-styles.css        # Styles de l'admin
+├── script.js               # Tracking des clics
+├── admin-script.js         # Dashboard analytics
+├── env.js                  # Config (mot de passe admin + API URL)
+├── env.example.js          # Template de configuration
+├── img/                    # Images (avatar, etc.)
+│   └── avatar.jpg
+├── api/                    # API Node.js + MongoDB
+│   ├── server.js           # Serveur Express
+│   ├── package.json        # Dépendances
+│   ├── .env                # Config MongoDB
+│   └── .env.example        # Template
+├── Dockerfile              # Conteneur combiné (Nginx + Node.js)
+├── .dockerignore           # Fichiers exclus
+└── .gitignore              # Fichiers non versionnés
+
 ```
+
+## 🚀 Déploiement avec Dokploy
+
+### 1. Créer deux applications dans Dokploy
+
+**Application 1 : Linktree (Frontend + API)**
+- Type : Docker
+- Build from : Git ou dossier
+- Dockerfile : `./Dockerfile` (déjà configuré)
+- Port : 80
+- Variables d'environnement :
+  ```env
+  MONGODB_URI=mongodb://[URL-MONGODB-DOKPLOY]:27017/linktree-analytics
+  ALLOWED_ORIGINS=https://link.jacoballen.ca
+  ```
+
+**Application 2 : MongoDB**
+- Type : MongoDB (template intégré Dokploy)
+- Pas de configuration spéciale nécessaire
+- Dokploy vous donnera l'URL de connexion
+
+### 2. Configuration
+
+1. **Mettre à jour `env.js`** :
+   ```javascript
+   window.ENV = {
+       ADMIN_PASSWORD: 'votre-mot-de-passe-securise',
+       API_URL: '/api'
+   };
+   ```
+
+2. **Pousser sur Git** et déployer via Dokploy
+
+3. **Accéder à l'admin** : `https://link.jacoballen.ca/admin.html`
 
 ## 🛠️ Personnalisation
 
-### 1. Modifier vos informations personnelles
+### 1. Modifier les liens
 
-Ouvrez [index.html](index.html) et modifiez :
-
-**Photo de profil** (ligne ~35) :
-Remplacez par votre propre image :
-```html
-<img src="./img/ma-photo.jpg" alt="Jacob Allen" id="profilePhoto">
-```
-
-**Description** (ligne ~43) :
-```html
-<p class="profile-description">
-    Développeur passionné par la création d'expériences web modernes et innovantes.
-</p>
-```
-
-### 2. Modifier les liens
-
-Dans [index.html](index.html), section `<!-- Boutons de liens -->` (lignes ~48-80) :
+Dans [index.html](index.html), section `<div class="links-container">` :
 
 ```html
-<!-- Site principal -->
-<a href="https://yourwebsite.ca" class="link-button" target="_blank">
+<a href="https://votre-site.com" class="link-button" target="_blank">
     <i class="fas fa-globe"></i>
-    <span>Site Principal</span>
-    <i class="fas fa-arrow-right arrow-icon"></i>
-</a>
-
-<!-- YouTube -->
-<a href="https://youtube.com/@votre-chaine" class="link-button" target="_blank">
-    <i class="fab fa-youtube"></i>
-    <span>YouTube</span>
-    <i class="fas fa-arrow-right arrow-icon"></i>
+    <span>Mon Site</span>
 </a>
 ```
 
-**Remplacez simplement les URLs** par vos propres liens.
+### 2. Changer le mot de passe admin
 
-### 3. Modifier les couleurs
-
-Dans [styles.css](styles.css), section `:root` (lignes ~4-15) :
-
-```css
-:root {
-    --primary-bg: #0a1628;      /* Couleur de fond principale */
-    --accent-blue: #3b82f6;     /* Bleu d'accentuation */
-    --accent-cyan: #06b6d4;     /* Cyan */
-    --accent-purple: #8b5cf6;   /* Violet */
-}
+Dans [env.js](env.js) :
+```javascript
+window.ENV = {
+    ADMIN_PASSWORD: 'nouveau-mot-de-passe-super-securise',
+    API_URL: '/api'
+};
 ```
 
-## 🚀 Déploiement
+### 3. Modifier les réseaux sociaux
 
-### Option 1 : Ouvrir directement (développement)
+Dans [index.html](index.html), section `<div class="social-links">` :
 
-Double-cliquez sur [index.html](index.html) pour l'ouvrir dans votre navigateur.
+```html
+<a href="https://github.com/votre-username" class="social-icon" aria-label="GitHub">
+    <i class="fab fa-github"></i>
+</a>
+```
 
-### Option 2 : Serveur local simple
+### 4. Changer l'avatar
+
+Remplacez `img/avatar.jpg` par votre propre image.
+
+## 📊 Page Admin
+
+- **URL** : `/admin.html`
+- **Mot de passe** : Défini dans `env.js`
+- **Fonctionnalités** :
+  - Total de clics en temps réel
+  - Statistiques par lien
+  - Pourcentages et graphiques
+  - Réinitialisation des stats
+  - Auto-refresh toutes les 5 secondes
+
+## 🔧 API Endpoints
+
+L'API est disponible sur `/api` :
+
+- `GET /api/health` - Health check
+- `POST /api/clicks` - Enregistrer un clic
+- `GET /api/stats` - Obtenir toutes les statistiques
+- `GET /api/stats/:linkName` - Stats d'un lien spécifique
+- `DELETE /api/stats` - Réinitialiser (confirmation requise)
+
+## 🧪 Test en local
 
 ```bash
-# Python 3
-python -m http.server 8000
+# Build l'image
+docker build -t linktree-test .
 
-# Node.js (avec npx)
-npx http-server -p 8000
+# Lancer MongoDB
+docker run -d --name mongo-test -p 27017:27017 mongo:7-jammy
+
+# Lancer le site
+docker run -d -p 8080:80 \
+  -e MONGODB_URI=mongodb://host.docker.internal:27017/linktree-analytics \
+  --name linktree-test \
+  linktree-test
+
+# Accéder au site
+# Frontend: http://localhost:8080
+# Admin: http://localhost:8080/admin.html
 ```
 
-Puis ouvrez http://localhost:8000
+## 🔐 Sécurité
 
-#### Lancer le conteneur
+- ✅ Mot de passe admin stocké dans `env.js` (gitignored)
+- ✅ CORS configuré pour votre domaine uniquement
+- ✅ Validation des données côté serveur
+- ✅ Headers de sécurité Nginx
+- ⚠️ **Important** : Ne commitez JAMAIS `env.js` dans Git !
 
-```bash
-# Lancer le conteneur sur le port 8080
-docker run -d -p 8080:80 --name my-linktree linktree-jacob
-```
+## 📦 Technologies
 
-Le site sera accessible sur : **http://localhost:8080**
+**Frontend:**
+- HTML5, CSS3, JavaScript
+- Font Awesome 6
+- Google Fonts (Inter)
 
-#### Commandes Docker utiles
+**Backend:**
+- Node.js 20
+- Express.js
+- MongoDB (Mongoose)
+- Nginx Alpine
 
-```bash
-# Voir les conteneurs en cours d'exécution
-docker ps
+**Infrastructure:**
+- Docker (multi-stage build)
+- Dokploy (déploiement)
 
-# Arrêter le conteneur
-docker stop my-linktree
+## 🐛 Dépannage
 
-# Redémarrer le conteneur
-docker start my-linktree
+**Les stats ne s'enregistrent pas :**
+- Vérifiez que `MONGODB_URI` est correctement configuré
+- Vérifiez les logs : `docker logs [nom-conteneur]`
 
-# Voir les logs
-docker logs my-linktree
+**Page admin inaccessible :**
+- Vérifiez le mot de passe dans `env.js`
+- Le fichier `env.js` doit être copié dans le conteneur
 
-# Supprimer le conteneur
-docker rm my-linktree
-
-# Supprimer l'image
-docker rmi linktree-jacob
-```
-
-## 🔧 Technologies utilisées
-
-- **HTML5** : Structure sémantique
-- **CSS3** : Animations, gradients, backdrop-filter
-- **JavaScript** : Animations interactives, parallaxe
-- **Font Awesome 6** : Icônes
-- **Google Fonts** : Police Inter
-- **Nginx Alpine** : Serveur web léger
-- **Docker** : Conteneurisation
+**API ne répond pas :**
+- Vérifiez que le port 3000 est accessible en interne
+- Nginx doit proxy `/api/` vers `http://localhost:3000/api/`
 
 ## 📝 Licence
 
@@ -144,7 +195,7 @@ Libre d'utilisation. Personnalisez à votre guise !
 
 Pour toute question ou suggestion :
 - 🌐 Site : https://jacoballen.ca
-- 📧 Email : [contact@jacoballen.ca]
+- 📧 Email : contact@jacoballen.ca
 
 ---
 
