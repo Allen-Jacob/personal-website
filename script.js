@@ -1,5 +1,6 @@
 /**
  * Script simplifié pour Linktree
+ * Utilise localStorage uniquement (pas d'API)
  */
 
 // Créer les points animés (étoiles)
@@ -27,30 +28,14 @@ function createStars() {
     }
 }
 
-// Système de tracking des clics
-async function trackClick(buttonName) {
+// Système de tracking des clics (localStorage uniquement)
+function trackClick(buttonName) {
     try {
-        // Envoyer à l'API si disponible
-        if (window.ENV?.API_URL) {
-            await fetch(`${window.ENV.API_URL}/clicks`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ linkName: buttonName })
-            });
-        } else {
-            // Fallback sur localStorage si pas d'API
-            let stats = JSON.parse(localStorage.getItem('linkStats') || '{}');
-            stats[buttonName] = (stats[buttonName] || 0) + 1;
-            localStorage.setItem('linkStats', JSON.stringify(stats));
-        }
-    } catch (error) {
-        console.error('Error tracking click:', error);
-        // Fallback sur localStorage en cas d'erreur
         let stats = JSON.parse(localStorage.getItem('linkStats') || '{}');
         stats[buttonName] = (stats[buttonName] || 0) + 1;
         localStorage.setItem('linkStats', JSON.stringify(stats));
+    } catch (error) {
+        console.error('Error tracking click:', error);
     }
 }
 
@@ -70,8 +55,47 @@ function initTracking() {
     });
 }
 
+// Créer et afficher l'horloge du Québec
+function createQuebecClock() {
+    // Créer l'élément de l'horloge
+    const clockDiv = document.createElement('div');
+    clockDiv.className = 'quebec-clock';
+    clockDiv.innerHTML = `
+        <span class="clock-time" id="quebecTime">--:--</span>
+        <span class="clock-label">QC</span>
+    `;
+    document.body.appendChild(clockDiv);
+
+    // Fonction pour mettre à jour l'heure
+    function updateQuebecTime() {
+        const now = new Date();
+        
+        // Convertir en heure du Québec (America/Montreal, UTC-5 ou UTC-4 selon DST)
+        const quebecTime = new Date(now.toLocaleString('en-US', { 
+            timeZone: 'America/Montreal' 
+        }));
+
+        // Formater l'heure en HH:MM
+        const hours = quebecTime.getHours().toString().padStart(2, '0');
+        const minutes = quebecTime.getMinutes().toString().padStart(2, '0');
+        
+        // Mettre à jour l'affichage
+        const timeElement = document.getElementById('quebecTime');
+        if (timeElement) {
+            timeElement.textContent = `${hours}:${minutes}`;
+        }
+    }
+
+    // Mettre à jour immédiatement
+    updateQuebecTime();
+
+    // Mettre à jour toutes les secondes
+    setInterval(updateQuebecTime, 1000);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     createStars();
     initTracking();
-    console.log('✨ Linktree chargé');
+    createQuebecClock();
+    console.log('✨ Linktree chargé avec horloge QC (localStorage uniquement)');
 });

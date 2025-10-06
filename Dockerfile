@@ -1,26 +1,11 @@
 # ============================================
-# Dockerfile combiné : Frontend + API
+# Dockerfile : Frontend uniquement (Nginx)
 # ============================================
 
-# Stage 1 : Construire l'API Node.js
-FROM node:20-alpine AS api-builder
-WORKDIR /app/api
-COPY api/package*.json ./
-RUN npm install --production
-COPY api/server.js ./
-
-# Stage 2 : Image finale avec Nginx + Node.js
-FROM node:20-alpine
-
-# Installer Nginx
-RUN apk add --no-cache nginx
+FROM nginx:alpine
 
 # Créer les répertoires nécessaires
-RUN mkdir -p /run/nginx /var/log/nginx /usr/share/nginx/html
-
-# Copier l'API depuis le stage précédent
-WORKDIR /app/api
-COPY --from=api-builder /app/api ./
+RUN mkdir -p /usr/share/nginx/html
 
 # Copier les fichiers frontend
 COPY index.html /usr/share/nginx/html/
@@ -33,8 +18,8 @@ COPY env*.js /usr/share/nginx/html/
 COPY img/ /usr/share/nginx/html/img/
 
 # Configuration Nginx
-RUN rm -f /etc/nginx/http.d/default.conf
-COPY <<EOF /etc/nginx/http.d/default.conf
+RUN rm -f /etc/nginx/conf.d/default.conf
+COPY <<EOF /etc/nginx/conf.d/default.conf
 server {
     listen 80;
     server_name _;
@@ -57,19 +42,6 @@ server {
         add_header Cache-Control "public, immutable";
     }
 
-    # Proxy pour l'API
-    location /api/ {
-        proxy_pass http://localhost:3000/api/;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host \$host;
-        proxy_set_header X-Real-IP \$remote_addr;
-        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto \$scheme;
-        proxy_cache_bypass \$http_upgrade;
-    }
-
     # Servir les fichiers statiques
     location / {
         try_files \$uri \$uri/ =404;
@@ -82,23 +54,8 @@ server {
 }
 EOF
 
-# Script de démarrage
-RUN echo '#!/bin/sh' > /start.sh && \
-    echo 'echo "🚀 Démarrage de l API..."' >> /start.sh && \
-    echo 'cd /app/api' >> /start.sh && \
-    echo 'node server.js &' >> /start.sh && \
-    echo 'echo "🌐 Démarrage de Nginx..."' >> /start.sh && \
-    echo 'nginx -g "daemon off;"' >> /start.sh && \
-    chmod +x /start.sh
-
-# Variables d'environnement
-ENV NODE_ENV=production
-ENV PORT=3000
-ENV MONGODB_URI=mongodb://mongodb:27017/linktree-analytics
-ENV ALLOWED_ORIGINS=*
-
 # Exposer le port 80
 EXPOSE 80
 
-# Démarrer les services
-CMD ["/bin/sh", "/start.sh"]
+# Démarrer Nginx
+CMD ["nginx", "-g", "daemon off;"]
