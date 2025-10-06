@@ -184,18 +184,9 @@ body {
     transform: scale(0.98);
 }
 
-.link-button i:first-child {
+.link-button i {
     font-size: 1.125rem;
     color: var(--button-text);
-}
-
-.link-button span {
-    flex: 1;
-    text-align: left;
-}
-
-.arrow-icon {
-    display: none;
 }
 
 /* ============================================
