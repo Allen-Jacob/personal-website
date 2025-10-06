@@ -17,8 +17,13 @@ COPY index.html /usr/share/nginx/html/
 COPY styles.css /usr/share/nginx/html/
 COPY script.js /usr/share/nginx/html/
 
-# Optionnel: Copier un dossier d'images si vous en avez
-# COPY images/ /usr/share/nginx/html/images/
+# Copier les fichiers admin
+COPY admin.html /usr/share/nginx/html/
+COPY admin-styles.css /usr/share/nginx/html/
+COPY admin-script.js /usr/share/nginx/html/
+
+# Copier le dossier d'images
+COPY img/ /usr/share/nginx/html/img/
 
 # Configuration Nginx personnalisée (optionnelle)
 # Si vous voulez ajouter des headers de sécurité ou configurer le cache
@@ -45,13 +50,15 @@ server {
         add_header Cache-Control "public, immutable";
     }
 
-    # Redirection 404 vers index.html
+    # Servir les fichiers statiques directement
     location / {
-        try_files \$uri \$uri/ /index.html;
+        try_files \$uri \$uri/ =404;
     }
 
-    # Page d'erreur personnalisée (optionnel)
-    error_page 404 /index.html;
+    # Rediriger la racine vers index.html
+    location = / {
+        try_files /index.html =404;
+    }
 }
 EOF
 
