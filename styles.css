@@ -278,22 +278,48 @@ body {
     font-size: 0.75rem;
     color: var(--text-secondary);
 }
-/* Bouton “En développement” */
+/* ============================================
+   IN DEVELOPPEMENT BUTTON
+   ============================================ */
 .dev-button {
-    cursor: default; /* pas encore cliquable */
+    cursor: default; /* pas cliquable */
     pointer-events: none;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* centrer le texte */
+    gap: 1rem; /* espace entre texte et barre */
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #ffffff;
+    max-width: 320px;
+    margin: 0 auto;
 }
 
+.dev-button:hover {
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+.dev-text {
+    text-align: center;
+    flex-grow: 1; /* prendre l’espace disponible */
+}
+
+/* Barre animée */
 .dev-bar {
-    flex-shrink: 0;
     width: 60px;
     height: 6px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.7), rgba(255,255,255,0.3));
     border-radius: 3px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.7), rgba(255,255,255,0.3));
     animation: dev-slide 1.5s linear infinite;
+    flex-shrink: 0;
 }
 
 /* Animation de la barre */
@@ -302,10 +328,6 @@ body {
     100% { background-position: 200% 0%; }
 }
 
-/* Optionnel : effet léger au hover (cohérent avec ton style) */
-.dev-button:hover .dev-bar {
-    animation-duration: 1s;
-}
 
 /* ============================================
    RESPONSIVE
