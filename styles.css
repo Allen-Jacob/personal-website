@@ -278,6 +278,34 @@ body {
     font-size: 0.75rem;
     color: var(--text-secondary);
 }
+/* Bouton “En développement” */
+.dev-button {
+    cursor: default; /* pas encore cliquable */
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dev-bar {
+    flex-shrink: 0;
+    width: 60px;
+    height: 6px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.7), rgba(255,255,255,0.3));
+    border-radius: 3px;
+    animation: dev-slide 1.5s linear infinite;
+}
+
+/* Animation de la barre */
+@keyframes dev-slide {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+}
+
+/* Optionnel : effet léger au hover (cohérent avec ton style) */
+.dev-button:hover .dev-bar {
+    animation-duration: 1s;
+}
 
 /* ============================================
    RESPONSIVE
