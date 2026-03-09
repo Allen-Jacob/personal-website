@@ -6,12 +6,12 @@
   <title>Jacob Allen</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="card">
 
-    <!-- Title bar -->
     <div class="titlebar">
       <span class="dot red"></span>
       <span class="dot yellow"></span>
@@ -21,10 +21,12 @@
 
     <div class="body">
 
-      <!-- Left: Profile -->
       <div class="profile">
         <div class="avatar-wrap">
-          <div class="avatar">JA</div>
+          <!-- Remplace photo.jpg par le nom de ta photo dans le même dossier -->
+          <img class="avatar" src="photo.jpg" alt="Jacob Allen"
+               onerror="this.style.display='none'; document.getElementById('avatar-fallback').style.display='flex';">
+          <div class="avatar avatar-fallback" id="avatar-fallback">JA</div>
           <div class="avatar-glow"></div>
         </div>
         <span class="comment">// user_profile</span>
@@ -34,59 +36,44 @@
           <span class="status-dot"></span>
           online
         </span>
-
-        <div class="socials">
-          <a href="https://github.com/TON_USERNAME" target="_blank" rel="noopener" class="social" title="GitHub">
-            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          </a>
-          <a href="https://linkedin.com/in/TON_USERNAME" target="_blank" rel="noopener" class="social" title="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="mailto:jacob@jacoballen.ca" class="social" title="Email">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </a>
-        </div>
-
-        <span class="footer-note">// made in Québec 🍁</span>
       </div>
 
-      <!-- Right: Links -->
-      <div class="links-col">
-        <span class="links-title">// links</span>
+      <div class="links">
 
         <a href="https://jacoballen.ca" target="_blank" rel="noopener" class="link">
-          <div class="link-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
+          <div class="link-icon"><i class="fa-solid fa-globe"></i></div>
           <span class="link-label">jacoballen.ca</span>
-          <svg class="link-arrow" viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          <i class="fa-solid fa-arrow-up-right-from-square link-arrow"></i>
         </a>
 
-        <a href="mailto:jacob@jacoballen.ca" class="link">
-          <div class="link-icon">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <span class="link-label">email</span>
-          <svg class="link-arrow" viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        <a href="https://j.jacoballen.ca/github" target="_blank" rel="noopener" class="link">
+          <div class="link-icon"><i class="fa-brands fa-github"></i></div>
+          <span class="link-label">GitHub</span>
+          <i class="fa-solid fa-arrow-up-right-from-square link-arrow"></i>
         </a>
 
-        <a href="https://github.com/TON_USERNAME" target="_blank" rel="noopener" class="link">
-          <div class="link-icon">
-            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          </div>
-          <span class="link-label">github</span>
-          <svg class="link-arrow" viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-
-        <a href="https://linkedin.com/in/TON_USERNAME" target="_blank" rel="noopener" class="link">
-          <div class="link-icon">
-            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </div>
-          <span class="link-label">linkedin</span>
-          <svg class="link-arrow" viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        <a href="mailto:contact@jacoballen.ca" class="link">
+          <div class="link-icon"><i class="fa-solid fa-envelope"></i></div>
+          <span class="link-label">Email</span>
+          <i class="fa-solid fa-arrow-up-right-from-square link-arrow"></i>
         </a>
 
       </div>
+
+      <div class="socials">
+        <a href="https://j.jacoballen.ca/x" target="_blank" rel="noopener" class="social" title="X">
+          <i class="fa-brands fa-square-x-twitter"></i>
+        </a>
+        <a href="https://j.jacoballen.ca/insta" target="_blank" rel="noopener" class="social" title="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://j.jacoballen.ca/strava" target="_blank" rel="noopener" class="social" title="Strava">
+          <i class="fa-brands fa-strava"></i>
+        </a>
+      </div>
+
+      <p class="footer-note">// made in Québec 🍁</p>
+
     </div>
   </div>
 </body>
