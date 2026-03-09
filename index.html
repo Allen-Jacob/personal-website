@@ -1,129 +1,91 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jacob Allen - Links</title>
-    <meta name="description" content="Tous mes liens en un seul endroit">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jacoballen.ca">
-    <meta property="og:title" content="Jacob Allen - Links">
-    <meta property="og:description" content="Tous mes liens en un seul endroit - Développeur passionné">
-    <meta property="og:image" content="https://jacoballen.ca/img/avatar.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://jacoballen.ca">
-    <meta property="twitter:title" content="Jacob Allen - Links">
-    <meta property="twitter:description" content="Tous mes liens en un seul endroit - Développeur passionné">
-    <meta property="twitter:image" content="https://jacoballen.ca/img/avatar.jpg">
-
-    <!-- Font Awesome pour les icônes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jacob Allen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Points animés dans le fond -->
-    <div class="stars" id="stars"></div>
-
-    <!-- L'horloge sera ajoutée automatiquement par script.js -->
-
-    <!-- Contenu principal -->
-    <div class="container">
-        <div class="profile-card">
-            <!-- Photo de profil -->
-            <div class="profile-image">
-                <img src="https://i.ibb.co/8gCD6K7c/avatar.jpg" alt="avatar" border="0">
-            </div>
-
-            <!-- Nom -->
-            <h1 class="profile-name">Jacob Allen 🧑‍💻</h1>
-
-            <!-- Description -->
-            <p class="profile-description">
-                | Homelaber | Love Nature 🍁 | Study Developer |
-            </p>
-
-            <!-- Boutons de liens -->
-            <div class="links-container">
-                <a href="https://jacoballen.ca" class="link-button" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-globe"></i>
-                    <span>Site Principal</span>
-                    <i class="fas fa-arrow-right arrow-icon"></i>
-                </a>
-                
-                <a href="https://l.jacoballen.ca/mail" class="link-button" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span>Mail</span>
-                    <i class="fas fa-arrow-right arrow-icon"></i>
-                </a>
-                
-                <a href="https://l.jacoballen.ca/youtube" class="link-button" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-youtube"></i>
-                    <span>YouTube</span>
-                    <i class="fas fa-arrow-right arrow-icon"></i>
-                </a>
-
-                <a href="https://l.jacoballen.ca/github" class="link-button" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                    <i class="fas fa-arrow-right arrow-icon"></i>
-                </a>
-
-                <a href="https://l.jacoballen.ca/insta" class="link-button" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-instagram"></i>
-                    <span>Instagram</span>
-                    <i class="fas fa-arrow-right arrow-icon"></i>
-                </a>
-
-                <a href="https://l.jacoballen.ca/x" class="link-button" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-x-twitter"></i>
-                    <span>X (Twitter)</span>
-                    <i class="fas fa-arrow-right arrow-icon"></i>
-                </a>
-
-                <a href="https://status.jacoballen.ca/" class="link-button" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-solid fa-signal"></i
-                    <span>Status Page</span>
-                    <i class="fas fa-arrow-right arrow-icon"></i>
-                </a>
-                
-            </div>
-
-            <h1 class="profile-name" style="margin-top: 2rem;">My Projects</h1>
-
-            <!-- <div class="links-container">
-
-            </div>
-            <>My Project - En développement -->
-            <!-- My Project - En développement -->
-            <div class="links-container">
-                <a href="#" class="link-button dev-button">
-                    <span class="dev-text">In Dev</span>
-                    <div class="dev-bar"></div>
-                </a>
-            </div>
-
-            
-            <!-- Footer -->
-            <div class="footer">
-                <p>&copy; 2026 Jacob Allen</p>
-                <a href="admin.html" style="color: var(--text-secondary); opacity: 0.3; font-size: 0.7rem; text-decoration: none; margin-top: 0.5rem; display: inline-block;">Admin</a>
-            </div>
-        </div>
+  <div class="card">
+    <!-- Title bar -->
+    <div class="titlebar">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="titlebar-label">profile.config</span>
     </div>
 
-    <script src="script.js"></script>
+    <div class="body">
+      <!-- Profile -->
+      <div class="profile">
+        <div class="avatar-wrap">
+          <div class="avatar">JA</div>
+          <div class="avatar-glow"></div>
+        </div>
+        <span class="comment">// user_profile</span>
+        <span class="name">Jacob Allen</span>
+        <span class="role">student_dev</span>
+        <span class="status">
+          <span class="status-dot"></span>
+          online
+        </span>
+      </div>
+
+      <!-- Links -->
+      <div class="links">
+
+        <a href="https://jacoballen.ca" target="_blank" rel="noopener" class="link">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <span class="link-label">jacoballen.ca</span>
+          <svg class="link-arrow" viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+
+        <a href="mailto:jacob@jacoballen.ca" class="link">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span class="link-label">email</span>
+          <svg class="link-arrow" viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+
+        <a href="https://github.com/TON_USERNAME" target="_blank" rel="noopener" class="link">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </div>
+          <span class="link-label">github</span>
+          <svg class="link-arrow" viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+
+        <a href="https://linkedin.com/in/TON_USERNAME" target="_blank" rel="noopener" class="link">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <span class="link-label">linkedin</span>
+          <svg class="link-arrow" viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+
+      </div>
+
+      <!-- Socials -->
+      <div class="socials">
+        <a href="https://github.com/TON_USERNAME" target="_blank" rel="noopener" class="social" title="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/TON_USERNAME" target="_blank" rel="noopener" class="social" title="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="mailto:jacob@jacoballen.ca" class="social" title="Email">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+
+      <p class="footer-note">// made in Québec 🍁</p>
+    </div>
+  </div>
 </body>
 </html>

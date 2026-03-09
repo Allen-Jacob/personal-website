@@ -1,381 +1,301 @@
-/* ============================================
-   VARIABLES ET RESET
-   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
-    --bg-space: #000000;
-    --text-primary: #ffffff;
-    --text-secondary: #b4b4b4;
-    --button-bg: rgba(255, 255, 255, 0.12);
-    --button-text: #ffffff;
-    --button-hover: rgba(255, 255, 255, 0.18);
-    --border-radius: 8px;
-    --transition: all 0.2s ease;
+  --bg: #0d0f12;
+  --surface: #13161b;
+  --surface2: #1a1e25;
+  --border: #242830;
+  --border-hover: #3a4150;
+  --text: #e2e8f0;
+  --muted: #4a5568;
+  --accent: #4a8fe8;
+  --accent2: #2d6bc4;
+  --accent-glow: rgba(74, 143, 232, 0.15);
+  --green: #48bb78;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html, body {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
 }
 
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background-color: var(--bg-space);
-    background-image:
-        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(74, 47, 189, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-    color: var(--text-primary);
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-    opacity: 0;
-    animation: page-fade-in 0.8s ease-out forwards;
+/* Subtle grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(74,143,232,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,143,232,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
 }
 
-@keyframes page-fade-in {
-    to {
-        opacity: 1;
-    }
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1100px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  animation: fadeUp 0.5s ease both;
 }
 
-/* ============================================
-   POINTS ANIMÉS (ÉTOILES)
-   ============================================ */
-.stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: #ffffff;
-    border-radius: 50%;
-    opacity: 0;
-    animation: twinkle 3s ease-in-out infinite, float 20s linear infinite;
+/* Title bar */
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
 }
 
-@keyframes twinkle {
-    0%, 100% {
-        opacity: 0;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.8;
-        transform: scale(1.2);
-    }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red    { background: #ff5f57; }
+.dot.yellow { background: #febc2e; }
+.dot.green  { background: #28c840; }
+
+.titlebar-label {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
 }
 
-@keyframes float {
-    0% {
-        transform: translate(0, 0);
-    }
-    25% {
-        transform: translate(10px, -10px);
-    }
-    50% {
-        transform: translate(-5px, -20px);
-    }
-    75% {
-        transform: translate(-15px, -10px);
-    }
-    100% {
-        transform: translate(0, 0);
-    }
+/* Body */
+.body {
+  padding: 52px 80px 48px;
 }
 
-/* ============================================
-   HORLOGE QUÉBEC
-   ============================================ */
-.quebec-clock {
-    position: fixed;
-    bottom: 1.5rem;
-    left: 1.5rem;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
-    background: rgba(20, 20, 30, 0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    color: var(--text-primary);
-    font-size: 0.875rem;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: var(--transition);
+/* Profile */
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 40px;
 }
 
-.quebec-clock:hover {
-    background: rgba(30, 30, 40, 0.9);
-    border-color: rgba(255, 255, 255, 0.25);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+.avatar-wrap {
+  position: relative;
+  width: 88px;
+  height: 88px;
 }
 
-.clock-time {
-    font-family: 'Courier New', monospace;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
+.avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  overflow: hidden;
 }
 
-.clock-label {
-    color: var(--text-secondary);
-    font-size: 0.75rem;
-    font-weight: 500;
+.avatar-glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 14px;
+  background: var(--accent-glow);
+  filter: blur(8px);
+  z-index: -1;
 }
 
-/* ============================================
-   CONTENEUR PRINCIPAL
-   ============================================ */
-.container {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 1rem;
+.comment {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
 }
 
-.profile-card {
-    width: 100%;
-    max-width: 680px;
-    padding: 3rem 2rem;
+.name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--text);
 }
 
-/* ============================================
-   PROFIL
-   ============================================ */
-.profile-image {
-    width: 192px;
-    height: 192px;
-    margin: 0 auto 1rem;
-    padding: 4px;
-    background: #ffffff;
-    border-radius: 50%;
+.role {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
 }
 
-.profile-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    display: block;
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(72,187,120,0.08);
+  border: 1px solid rgba(72,187,120,0.2);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: 11px;
+  color: var(--green);
+  letter-spacing: 0.05em;
 }
 
-.profile-name {
-    font-size: 1.25rem;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s ease-in-out infinite;
 }
 
-.profile-description {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    text-align: center;
-    line-height: 1.5;
-    margin-bottom: 2rem;
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
 }
 
-/* ============================================
-   BOUTONS DE LIENS
-   ============================================ */
-.links-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+/* Links */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 36px;
 }
 
-.link-button {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 1rem 1.5rem;
-    background: var(--button-bg);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: var(--border-radius);
-    color: var(--button-text);
-    text-decoration: none;
-    font-size: 0.875rem;
-    font-weight: 600;
-    transition: var(--transition);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+.link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  animation: fadeUp 0.5s ease both;
 }
 
-.link-button:hover {
-    background: var(--button-hover);
-    border-color: rgba(255, 255, 255, 0.25);
-    transform: scale(1.04);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+.link:nth-child(1) { animation-delay: 0.1s; }
+.link:nth-child(2) { animation-delay: 0.15s; }
+.link:nth-child(3) { animation-delay: 0.2s; }
+.link:nth-child(4) { animation-delay: 0.25s; }
+
+.link:hover {
+  border-color: var(--accent);
+  background: rgba(74,143,232,0.06);
+  transform: translateX(3px);
 }
 
-.link-button:active {
-    transform: scale(0.98);
+.link-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s;
 }
 
-.link-button i {
-    font-size: 1.125rem;
-    color: var(--button-text);
+.link:hover .link-icon {
+  background: var(--accent-glow);
 }
 
-/* ============================================
-   RÉSEAUX SOCIAUX
-   ============================================ */
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
+.link-icon svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.social-icon {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 1.25rem;
-    transition: var(--transition);
+.link-label { flex: 1; }
+
+.link-arrow {
+  width: 16px;
+  height: 16px;
+  stroke: var(--muted);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.2s, transform 0.2s;
 }
 
-.social-icon:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-3px);
+.link:hover .link-arrow {
+  stroke: var(--accent);
+  transform: translate(2px, -2px);
 }
 
-.social-icon:active {
-    transform: translateY(0);
+/* Socials */
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
 }
 
-/* ============================================
-   FOOTER
-   ============================================ */
-.footer {
-    margin-top: 2rem;
-    text-align: center;
+.social {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--muted);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 
-.footer p {
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-}
-/* ============================================
-   IN DEVELOPPEMENT BUTTON
-   ============================================ */
-.dev-button {
-    cursor: default; /* pas cliquable */
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* centrer le texte */
-    gap: 1rem; /* espace entre texte et barre */
-    padding: 1rem 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: #ffffff;
-    max-width: 320px;
-    margin: 0 auto;
+.social:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-glow);
 }
 
-.dev-button:hover {
-    background: rgba(255,255,255,0.08);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+.social svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.dev-text {
-    text-align: center;
-    flex-grow: 1; /* prendre l’espace disponible */
+.footer-note {
+  text-align: center;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 24px;
+  letter-spacing: 0.06em;
 }
 
-/* Barre animée */
-.dev-bar {
-    width: 60px;
-    height: 6px;
-    border-radius: 3px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.7), rgba(255,255,255,0.3));
-    animation: dev-slide 1.5s linear infinite;
-    flex-shrink: 0;
-}
-
-/* Animation de la barre */
-@keyframes dev-slide {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 200% 0%; }
-}
-
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-@media (max-width: 640px) {
-    .profile-card {
-        padding: 2rem 1.5rem;
-    }
-
-    .container {
-        padding: 1rem;
-    }
-
-    .quebec-clock {
-        bottom: 1rem;
-        left: 1rem;
-        padding: 0.625rem 0.875rem;
-    }
-
-    .clock-time {
-        font-size: 0.875rem;
-    }
-
-    .clock-label {
-        font-size: 0.6875rem;
-    }
-}
-.profile-card {
-    width: 100%;
-    max-width: 680px;
-    padding: 3rem 2rem;
-    background: rgba(20, 20, 30, 0.7);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-    animation: card-slide-up 0.8s ease-out;
-}
-
-@keyframes card-slide-up {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@media (max-width: 480px) {
+  .body { padding: 32px 24px 28px; }
+  .name { font-size: 26px; }
 }
