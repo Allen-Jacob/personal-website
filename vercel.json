@@ -5,7 +5,7 @@
     { "source": "/twitter",  "destination": "https://x.com/Bridled01",                   "permanent": false },
     { "source": "/instagram","destination": "https://www.instagram.com/jacob.allen2009/",          "permanent": false },
     { "source": "/strava",  "destination": "https://www.strava.com/athletes/141873421",           "permanent": false },
-    { "source": "/email", "destination": "mailto:contact@jacoballen.ca",        "permanent": false },
+    { "source": "/email", "destination": "mailto:contact%40jacoballen.ca",        "permanent": false },
     { "source": "/starlink", "destination": "https://starlink.com/residential?referral=RC-DF-12693608-83528-7&app_source=share",                 "permanent": false }
   ]
 }
