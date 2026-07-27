@@ -1,202 +1,86 @@
-# 🔗 Linktree Personnel - Jacob Allen
+# jacoballen.ca — page de liens
 
-Site web Linktree épuré avec fond spatial noir, analytics MongoDB et page admin protégée.
+Site statique (HTML + CSS pur, zéro dépendance) prêt à déployer sur Vercel.
 
-## ✨ Fonctionnalités
+## Fichiers
 
-- 🎨 **Design minimaliste** avec fond spatial noir et étoiles animées
-- 📊 **Analytics centralisés** avec MongoDB - tracking multi-appareils
-- 🔐 **Page admin protégée** par mot de passe avec statistiques détaillées
-- 📱 **100% Responsive** - fonctionne sur tous les appareils
-- 🚀 **Déploiement facile** avec Docker (Frontend + API + Nginx)
-- ⚡ **Performances optimisées** - un seul conteneur pour tout
+- `index.html` — le contenu de la page (profil + cases de liens)
+- `style.css` — les couleurs, polices, espacements
+- `vercel.json` — les redirections d'URL courtes (ex. `jacoballen.ca/youtube`)
+- `README.md` — ce fichier
 
-## 📁 Structure du projet
+## Déployer sur Vercel
 
-```
-Linktree/
-├── index.html              # Page principale
-├── admin.html              # Page d'administration (protégée)
-├── styles.css              # Styles du site
-├── admin-styles.css        # Styles de l'admin
-├── script.js               # Tracking des clics
-├── admin-script.js         # Dashboard analytics
-├── env.js                  # Config (mot de passe admin + API URL)
-├── env.example.js          # Template de configuration
-├── img/                    # Images (avatar, etc.)
-│   └── avatar.jpg
-├── api/                    # API Node.js + MongoDB
-│   ├── server.js           # Serveur Express
-│   ├── package.json        # Dépendances
-│   ├── .env                # Config MongoDB
-│   └── .env.example        # Template
-├── Dockerfile              # Conteneur combiné (Nginx + Node.js)
-├── .dockerignore           # Fichiers exclus
-└── .gitignore              # Fichiers non versionnés
+1. Crée un compte sur [vercel.com](https://vercel.com) si ce n'est pas déjà fait.
+2. Mets ce dossier dans un repo GitHub (ou glisse-le directement dans Vercel avec "Add New… → Project → Deploy" en important le dossier).
+3. Dans les réglages du projet Vercel, ajoute ton domaine `jacoballen.ca` (Settings → Domains).
+4. Pousse tes changements : Vercel redéploie automatiquement à chaque `git push`.
 
-```
+## Ajouter / enlever une case de lien
 
-## 🚀 Déploiement avec Dokploy
-
-### 1. Créer deux applications dans Dokploy
-
-**Application 1 : Linktree (Frontend + API)**
-- Type : Docker
-- Build from : Git ou dossier
-- Dockerfile : `./Dockerfile` (déjà configuré)
-- Port : 80
-- Variables d'environnement :
-  ```env
-  MONGODB_URI=mongodb://[URL-MONGODB-DOKPLOY]:27017/linktree-analytics
-  ALLOWED_ORIGINS=https://link.jacoballen.ca
-  ```
-
-**Application 2 : MongoDB**
-- Type : MongoDB (template intégré Dokploy)
-- Pas de configuration spéciale nécessaire
-- Dokploy vous donnera l'URL de connexion
-
-### 2. Configuration
-
-1. **Mettre à jour `env.js`** :
-   ```javascript
-   window.ENV = {
-       ADMIN_PASSWORD: 'votre-mot-de-passe-securise',
-       API_URL: '/api'
-   };
-   ```
-
-2. **Pousser sur Git** et déployer via Dokploy
-
-3. **Accéder à l'admin** : `https://link.jacoballen.ca/admin.html`
-
-## 🛠️ Personnalisation
-
-### 1. Modifier les liens
-
-Dans [index.html](index.html), section `<div class="links-container">` :
+Dans `index.html`, chaque case est un bloc du genre :
 
 ```html
-<a href="https://votre-site.com" class="link-button" target="_blank">
-    <i class="fas fa-globe"></i>
-    <span>Mon Site</span>
+<a class="card" href="/instagram">
+  <span class="card-icon"> ... svg ... </span>
+  <span class="card-text">
+    <span class="card-title">Instagram</span>
+  </span>
+  <span class="card-chevron">›</span>
 </a>
 ```
 
-### 2. Changer le mot de passe admin
+- **Pour enlever une case** : supprime tout le bloc `<a class="card">…</a>`.
+- **Pour ajouter une case** : copie un bloc existant, colle-le où tu veux dans la liste, change le `href`, l'icône (SVG) et le texte.
+- Pour une case avec sous-titre coloré (style "Parrainages"), ajoute une deuxième ligne :
+  `<span class="card-subtitle">Ton texte</span>` juste après `card-title`, et mets la classe `card sponsor` sur le `<a>`.
 
-Dans [env.js](env.js) :
-```javascript
-window.ENV = {
-    ADMIN_PASSWORD: 'nouveau-mot-de-passe-super-securise',
-    API_URL: '/api'
-};
+Tu n'as pas besoin de toucher au CSS pour ajouter/enlever des cases — le style s'applique automatiquement.
+
+## Gérer les liens courts (jacoballen.ca/youtube → ta vraie URL)
+
+Tout se passe dans `vercel.json`. Chaque ligne fait un lien court :
+
+```json
+{ "source": "/youtube", "destination": "https://youtube.com/@tonpseudo", "permanent": false }
 ```
 
-### 3. Modifier les réseaux sociaux
+- `source` = le chemin court après ton domaine (donc `jacoballen.ca/youtube`)
+- `destination` = l'URL complète vers laquelle rediriger
+- `permanent: false` = redirection 307 (temporaire). Utile pendant que tu changes encore tes liens.
+  Une fois que tes URLs sont stables, tu peux mettre `true` pour une redirection 301 (permanente, mieux
+  référencée), mais les navigateurs et Google mettent alors le résultat en cache plus longtemps.
 
-Dans [index.html](index.html), section `<div class="social-links">` :
+**Pour ajouter un lien court** : ajoute une ligne dans le tableau `redirects` (n'oublie pas la virgule entre
+les lignes). Redéploie (`git push`), et Vercel s'occupe du reste — pas besoin de créer de nouvelle page.
+
+**Important :** les valeurs `TON-PSEUDO`, `TON-LIEN-DE-BOOKING`, etc. dans `vercel.json` et les `href`
+dans `index.html` sont des exemples à remplacer par tes vraies infos avant de déployer.
+
+## Outils de diagnostic Vercel (déjà branchés dans le code)
+
+Le fichier `index.html` contient déjà les balises `<script>` pour :
+
+- **Vercel Web Analytics** (trafic, pages vues)
+- **Vercel Speed Insights** (performance, Core Web Vitals)
+
+Pour qu'ils fonctionnent, il faut juste les **activer côté dashboard** (aucun code à ajouter en plus) :
+
+1. Va sur [vercel.com](https://vercel.com/dashboard) → ton projet.
+2. Onglet **Analytics** → clique **Enable**.
+3. Onglet **Speed Insights** → clique **Enable**.
+4. Redéploie une fois si les onglets viennent d'être activés.
+
+Les données apparaissent après quelques visites réelles sur le site.
+
+## Personnaliser l'avatar
+
+Par défaut l'avatar est un cercle avec les initiales "JA". Pour utiliser une vraie photo :
 
 ```html
-<a href="https://github.com/votre-username" class="social-icon" aria-label="GitHub">
-    <i class="fab fa-github"></i>
-</a>
+<div class="avatar">
+  <img src="ta-photo.jpg" alt="Jacob Allen" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">
+</div>
 ```
 
-### 4. Changer l'avatar
-
-Remplacez `img/avatar.jpg` par votre propre image.
-
-## 📊 Page Admin
-
-- **URL** : `/admin.html`
-- **Mot de passe** : Défini dans `env.js`
-- **Fonctionnalités** :
-  - Total de clics en temps réel
-  - Statistiques par lien
-  - Pourcentages et graphiques
-  - Réinitialisation des stats
-  - Auto-refresh toutes les 5 secondes
-
-## 🔧 API Endpoints
-
-L'API est disponible sur `/api` :
-
-- `GET /api/health` - Health check
-- `POST /api/clicks` - Enregistrer un clic
-- `GET /api/stats` - Obtenir toutes les statistiques
-- `GET /api/stats/:linkName` - Stats d'un lien spécifique
-- `DELETE /api/stats` - Réinitialiser (confirmation requise)
-
-## 🧪 Test en local
-
-```bash
-# Build l'image
-docker build -t linktree-test .
-
-# Lancer MongoDB
-docker run -d --name mongo-test -p 27017:27017 mongo:7-jammy
-
-# Lancer le site
-docker run -d -p 8080:80 \
-  -e MONGODB_URI=mongodb://host.docker.internal:27017/linktree-analytics \
-  --name linktree-test \
-  linktree-test
-
-# Accéder au site
-# Frontend: http://localhost:8080
-# Admin: http://localhost:8080/admin.html
-```
-
-## 🔐 Sécurité
-
-- ✅ Mot de passe admin stocké dans `env.js` (gitignored)
-- ✅ CORS configuré pour votre domaine uniquement
-- ✅ Validation des données côté serveur
-- ✅ Headers de sécurité Nginx
-- ⚠️ **Important** : Ne commitez JAMAIS `env.js` dans Git !
-
-## 📦 Technologies
-
-**Frontend:**
-- HTML5, CSS3, JavaScript
-- Font Awesome 6
-- Google Fonts (Inter)
-
-**Backend:**
-- Node.js 20
-- Express.js
-- MongoDB (Mongoose)
-- Nginx Alpine
-
-**Infrastructure:**
-- Docker (multi-stage build)
-- Dokploy (déploiement)
-
-## 🐛 Dépannage
-
-**Les stats ne s'enregistrent pas :**
-- Vérifiez que `MONGODB_URI` est correctement configuré
-- Vérifiez les logs : `docker logs [nom-conteneur]`
-
-**Page admin inaccessible :**
-- Vérifiez le mot de passe dans `env.js`
-- Le fichier `env.js` doit être copié dans le conteneur
-
-**API ne répond pas :**
-- Vérifiez que le port 3000 est accessible en interne
-- Nginx doit proxy `/api/` vers `http://localhost:3000/api/`
-
-## 📝 Licence
-
-Libre d'utilisation. Personnalisez à votre guise !
-
-## 🤝 Support
-
-Pour toute question ou suggestion :
-- 🌐 Site : https://jacoballen.ca
-- 📧 Email : contact@jacoballen.ca
-
----
-
-**Créé avec ❤️ par Jacob Allen**
+Mets `ta-photo.jpg` dans le même dossier que `index.html`.
