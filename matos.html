@@ -15,24 +15,24 @@
 </head>
 <body>
 
-<div class="bg-glow" aria-hidden="true">
-  <span class="blob blob-1"></span>
-  <span class="blob blob-2"></span>
-  <span class="blob blob-3"></span>
-</div>
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="stars" aria-hidden="true"></div>
+<header class="site-header">
+  <a href="index.html" class="header-name">Jacob Allen</a>
+  <nav aria-label="Navigation principale">
+    <a href="about.html">About</a>
+    <a href="matos.html" aria-current="page">Matériel</a>
+  </nav>
+</header>
 
 <main class="page">
 
-  <div class="subnav">
-    <a class="back-link" href="index.html">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Retour
-    </a>
-    <a class="back-link" href="about.html">À propos →</a>
-  </div>
-
-  <h1 class="page-title">Mon matériel</h1>
-  <p class="page-subtitle">Ce que j'utilise au quotidien.</p>
+  <section class="profile profile--compact">
+    <div class="hero-icon" aria-hidden="true">⌘</div>
+    <h1 class="name">Mon matériel</h1>
+    <p class="bio">Les outils et technologies que j’utilise au quotidien.</p>
+    <p class="status"><span class="status-dot"></span> Setup actuel</p>
+  </section>
 
   <!-- ============================================================ -->
   <!-- LISTE DE MATÉRIEL — même logique que les cases de liens.       -->
@@ -138,6 +138,75 @@
   </a>
 
 </nav>
+
+<p class="section-label">🎒 Appareils de voyage</p>
+<div class="links">
+
+  <div class="card travel-kit-card">
+    <span class="card-icon">🧳</span>
+    <span class="card-text">
+      <span class="card-title">TechPouch</span>
+      <span class="card-subtitle">Ma trousse technologique pour les déplacements</span>
+    </span>
+  </div>
+
+  <div class="card">
+    <span class="card-icon">🌐</span>
+    <span class="card-text">
+      <span class="card-title">Routeur de voyage GL.iNet Opal</span>
+      <span class="card-subtitle">Connexion réseau en déplacement</span>
+    </span>
+  </div>
+
+  <div class="card">
+    <span class="card-icon">⚡</span>
+    <span class="card-text">
+      <span class="card-title">Chargeur UGREEN 100 W</span>
+      <span class="card-subtitle">Chargeur principal de voyage</span>
+    </span>
+  </div>
+
+  <div class="card">
+    <span class="card-icon">🔋</span>
+    <span class="card-text">
+      <span class="card-title">Chargeur de voyage UGREEN 65 W</span>
+      <span class="card-subtitle">Format compact pour les déplacements</span>
+    </span>
+  </div>
+
+  <div class="card">
+    <span class="card-icon">🔌</span>
+    <span class="card-text">
+      <span class="card-title">Câble Apple 240 W — 2 m</span>
+      <span class="card-subtitle">Câble USB-C longue portée</span>
+    </span>
+  </div>
+
+  <div class="card">
+    <span class="card-icon">🔌</span>
+    <span class="card-text">
+      <span class="card-title">2 câbles UGREEN 240 W — 1 m</span>
+      <span class="card-subtitle">Câbles USB-C haute puissance</span>
+    </span>
+  </div>
+
+  <div class="card">
+    <span class="card-icon">⌚</span>
+    <span class="card-text">
+      <span class="card-title">Câble Apple Watch</span>
+      <span class="card-subtitle">Recharge de la montre en voyage</span>
+    </span>
+  </div>
+
+  <div class="card">
+    <span class="card-icon">💻</span>
+    <span class="card-text">
+      <span class="card-title">Câble MagSafe pour Mac</span>
+      <span class="card-subtitle">Recharge magnétique du MacBook</span>
+    </span>
+  </div>
+
+</div>
 
 <p class="section-label">📷 Photo & Vidéo</p>
 <nav class="links">
@@ -372,6 +441,7 @@
   window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
+<script src="effects.js"></script>
 
 </body>
 </html>

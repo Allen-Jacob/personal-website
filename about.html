@@ -14,19 +14,20 @@
 
 <body>
 
-<div class="bg-glow"></div>
-<div class="stars"></div>
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="stars" aria-hidden="true"></div>
 
-<div class="shooting-stars">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
+<header class="site-header">
+    <a href="index.html" class="header-name">Jacob Allen</a>
+    <nav aria-label="Navigation principale">
+        <a href="about.html" aria-current="page">About</a>
+        <a href="matos.html">Matériel</a>
+    </nav>
+</header>
 
-<div class="page">
+<main class="page">
 
-    <section class="profile">
+    <section class="profile profile--hero">
     <div class="avatar">
     <img src="photo.jpg" alt="Jacob Allen" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">
     </div>
@@ -36,42 +37,22 @@
         </h1>
 
         <p class="bio">
-            Qui je suis et ce qui me passionne.
+            Étudiant en informatique | Homelab | Réseaux | Développement
         </p>
+
+        <p class="status"><span class="status-dot"></span> Basé au Québec</p>
 
     </section>
 
-    <div class="section-label">
-        Bonjour !
-    </div>
+    <p class="section-label">Bonjour !</p>
 
     <div class="card about-card">
-
-        <div class="card-text">
-
-            <p>
-                Je m'appelle <strong>Jacob Allen</strong>. Je suis étudiant en informatique au Québec.
-            </p>
-
-            <p>
-                Depuis plusieurs années, je m’intéresse aux réseaux, aux serveurs, à Linux et à l’auto-hébergement. J’aime comprendre le fonctionnement des technologies et construire des projets qui me permettent d’apprendre.
-            </p>
-
-            <p>
-                Mon homelab est l’endroit où j’expérimente avec Docker, les VPN, la virtualisation et différents services auto-hébergés.
-            </p>
-
-            <p>
-                En dehors de l’informatique, je pratique le vélo de montagne, le ski, la course à pied et je m’intéresse de plus en plus à la photographie de paysages.
-            </p>
-
+        <div class="card-text markdown-content" id="about-content" aria-live="polite">
+            <p>Chargement de la présentation…</p>
         </div>
-
     </div>
 
-    <div class="section-label">
-        Quelques Faits sur moi !
-    </div>
+    <p class="section-label">Quelques faits sur moi</p>
 
     <div class="links">
 
@@ -98,9 +79,7 @@
 
     </div>
 
-    <div class="section-label">
-        Navigation
-    </div>
+    <p class="section-label">Navigation</p>
 
     <div class="links">
 
@@ -125,7 +104,9 @@
     <p>// made in Québec 🍁</p>
   </footer>
 
-</div>
+<script src="markdown.js"></script>
+<script src="effects.js"></script>
+</main>
 
 </body>
 </html>
