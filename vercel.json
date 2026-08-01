@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
     { "source": "/github",  "destination": "https://github.com/Allen-Jacob",             "permanent": false },
     { "source": "/x",        "destination": "https://x.com/Bridled01",                   "permanent": false },

@@ -1,112 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À propos • Jacob Allen</title>
-
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>À propos de Jacob Allen — Parcours et intérêts</title>
+  <meta name="description" content="Le parcours de Jacob Allen, son intérêt pour l’informatique, les réseaux, l’auto-hébergement, le vélo, le ski et la photo.">
+  <link rel="canonical" href="https://jacoballen.ca/about">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="stars" aria-hidden="true"></div>
 
-<div class="bg-glow" aria-hidden="true"></div>
-<div class="stars" aria-hidden="true"></div>
-
-<header class="site-header">
-    <a href="index.html" class="header-name">Jacob Allen</a>
+  <header class="site-header">
+    <a href="/" class="header-name" aria-label="Jacob Allen — Accueil">Jacob Allen</a>
     <nav aria-label="Navigation principale">
-        <a href="about.html" aria-current="page">About</a>
-        <a href="matos.html">Matériel</a>
+      <a href="/">Accueil</a>
+      <a href="/about" aria-current="page">À propos</a>
+      <a href="/matos">Matériel</a>
     </nav>
-</header>
+  </header>
 
-<main class="page">
-
-    <section class="profile profile--hero">
-    <div class="avatar">
-    <img src="photo.jpg" alt="Jacob Allen" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">
-    </div>
-    
-        <h1 class="name">
-            À propos
-        </h1>
-
-        <p class="bio">
-            Étudiant en informatique | Homelab | Réseaux | Développement
-        </p>
-
-        <p class="status"><span class="status-dot"></span> Basé au Québec</p>
-
+  <main class="page" id="contenu">
+    <section class="page-intro">
+      <p class="eyebrow">Mon parcours</p>
+      <h1>À propos de moi</h1>
+      <p>J’aime comprendre ce qui se passe derrière l’écran, apprendre en construisant et transformer ma curiosité en projets concrets.</p>
     </section>
 
-    <p class="section-label">Bonjour !</p>
+    <article class="about-card prose">
+      <h2>Bonjour, je m’appelle Jacob.</h2>
+      <p>Je vis au Québec et j’entre en <strong>technique informatique</strong>. C’est une étape qui me permettra d’approfondir mes connaissances, de développer de nouvelles compétences et de mieux comprendre les systèmes que j’utilise chaque jour.</p>
+      <p>Mon intérêt pour l’informatique vient surtout du plaisir de chercher, d’expérimenter et de résoudre des problèmes. Les <strong>réseaux</strong>, Linux, les serveurs et l’<strong>auto-hébergement</strong> m’intéressent particulièrement.</p>
+      <p>Mon homelab est mon terrain d’essai : j’y découvre Docker, les VPN, la virtualisation et différents services auto-hébergés. Chaque projet est une occasion d’apprendre quelque chose de nouveau.</p>
+      <p>Quand je décroche des écrans, j’aime faire du <strong>vélo de montagne</strong>, du <strong>ski</strong> et de la course. Je m’intéresse aussi de plus en plus à la <strong>photographie</strong>, surtout pour garder une trace des paysages et des aventures dehors.</p>
+    </article>
 
-    <div class="card about-card">
-        <div class="card-text markdown-content" id="about-content" aria-live="polite">
-            <p>Chargement de la présentation…</p>
-        </div>
+    <section aria-labelledby="learning-title">
+      <h2 class="section-label" id="learning-title">Ce que j’apprends actuellement</h2>
+      <div class="learning-grid">
+        <article class="mini-card"><span aria-hidden="true">⌁</span><div><h3>Réseaux</h3><p>Architecture, sécurité et connexions entre mes appareils.</p></div></article>
+        <article class="mini-card"><span aria-hidden="true">◫</span><div><h3>Auto-hébergement</h3><p>Docker, Linux et déploiement de services personnels.</p></div></article>
+        <article class="mini-card"><span aria-hidden="true">⌘</span><div><h3>Développement</h3><p>Des projets utiles pour consolider mes bases techniques.</p></div></article>
+      </div>
+    </section>
+
+    <div class="page-actions">
+      <a class="button button-primary" href="/github"><i class="fa-brands fa-github" aria-hidden="true"></i> Voir mon GitHub</a>
+      <a class="button" href="/">← Retour à l’accueil</a>
     </div>
+  </main>
 
-    <p class="section-label">Quelques faits sur moi</p>
-
-    <div class="links">
-
-        <div class="card">
-            <div class="card-text">
-                <div class="card-title">📍 Québec</div>
-                <!-- <div class="card-subtitle">Linux • Réseaux • Auto-hébergement • Sécurité</div> -->
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-text">
-                <div class="card-title">💼 Étudiant</div>
-                <!-- <div class="card-subtitle">Paysages • Nature • Voyages</div> -->
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-text">
-                <div class="card-title">☕ Toujours en train d'apprendre</div>
-                <!-- <div class="card-subtitle">Vélo de montagne • Ski • Course</div> -->
-            </div>
-        </div>
-
-    </div>
-
-    <p class="section-label">Navigation</p>
-
-    <div class="links">
-
-        <a href="index.html" class="card">
-
-            <div class="card-text">
-                <div class="card-title">
-                    ← Retour à l'accueil
-                </div>
-            </div>
-
-            <div class="card-chevron">
-                ›
-            </div>
-
-        </a>
-
-    </div>
-
-  <footer class="footer">
-    <p>JacobAllen.ca</p>
-    <p>// made in Québec 🍁</p>
-  </footer>
-
-<script src="markdown.js"></script>
-<script src="effects.js"></script>
-</main>
-
+  <footer class="footer"><p>© 2026 Jacob Allen · Fait au Québec 🍁</p></footer>
+  <script defer src="effects.js"></script>
 </body>
 </html>

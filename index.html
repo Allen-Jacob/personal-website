@@ -1,167 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jacob - Links</title>
-<meta name="description" content="Tous les liens de Jacob Allen — réseaux sociaux, contact et offres.">
-
-<!-- Favicon (remplace par ton propre fichier si tu en as un) -->
-<link rel="icon" href="data:,">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Jacob Allen — Informatique, réseaux et projets</title>
+  <meta name="description" content="Découvrez Jacob Allen, étudiant en technique informatique au Québec, ses projets, ses réseaux et ses liens essentiels.">
+  <link rel="canonical" href="https://jacoballen.ca/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="stars" aria-hidden="true"></div>
 
-<div class="bg-glow" aria-hidden="true"></div>
-<div class="stars" aria-hidden="true"></div>
-
-  <!-- ============================================================ -->
-  <!-- HEADER — nom à gauche, navigation à droite                    -->
-  <!-- ============================================================ -->
   <header class="site-header">
-    <a href="/" class="header-name">Jacob Allen</a>
-    <nav>
-      <a href="about.html">About</a>
-      <a href="matos.html">Matériel</a>
+    <a href="/" class="header-name" aria-label="Jacob Allen — Accueil">Jacob Allen</a>
+    <nav aria-label="Navigation principale">
+      <a href="/" aria-current="page">Accueil</a>
+      <a href="/about">À propos</a>
+      <a href="/matos">Matériel</a>
     </nav>
   </header>
 
-<main class="page">
+  <main class="page" id="contenu">
+    <section class="profile home-profile">
+      <div class="avatar"><picture><source srcset="photo.webp" type="image/webp"><img src="photo.jpg" alt="Portrait de Jacob Allen" width="196" height="196" loading="eager" decoding="async" fetchpriority="high"></picture></div>
+      <p class="eyebrow">Bonjour, moi c’est</p>
+      <h1 class="name">Jacob Allen</h1>
+      <p class="bio">Étudiant en technique informatique, passionné par les réseaux et l’auto-hébergement.</p>
+      <p class="status"><span class="status-dot" aria-hidden="true"></span> Basé au Québec</p>
+      <div class="profile-actions">
+        <a class="button button-primary" href="/about">À propos</a>
+        <a class="button" href="mailto:contact@jacoballen.ca">Me contacter</a>
+      </div>
+    </section>
 
-  <!-- ============================================================ -->
-  <!-- PROFIL — change le nom, la bio et l'avatar ici                -->
-  <!-- ============================================================ -->
-  <section class="profile">
-    <div class="avatar">
-    <img src="photo.jpg" alt="Jacob Allen" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">
-    </div>
-    <h1 class="name">Jacob Allen</h1>
-    <p class="bio">Étudiant en informatique | Homelab | Réseaux | Développement</p>
+    <section aria-labelledby="liens-title">
+      <h2 class="section-label" id="liens-title">Retrouvez-moi</h2>
+      <div class="links reveal-list">
+        <a class="card" href="/github">
+          <span class="card-icon" aria-hidden="true"><i class="fa-brands fa-github"></i></span>
+          <span class="card-text"><span class="card-title">GitHub</span><span class="card-subtitle">Mes projets et expérimentations</span></span>
+          <span class="card-chevron" aria-hidden="true">›</span>
+        </a>
+        <a class="card" href="/instagram">
+          <span class="card-icon" aria-hidden="true"><i class="fa-brands fa-instagram"></i></span>
+          <span class="card-text"><span class="card-title">Instagram</span><span class="card-subtitle">Photos et moments du quotidien</span></span>
+          <span class="card-chevron" aria-hidden="true">›</span>
+        </a>
+        <a class="card" href="/strava">
+          <span class="card-icon" aria-hidden="true"><i class="fa-brands fa-strava"></i></span>
+          <span class="card-text"><span class="card-title">Strava</span><span class="card-subtitle">Mes sorties sportives</span></span>
+          <span class="card-chevron" aria-hidden="true">›</span>
+        </a>
+      </div>
+    </section>
 
-    <!-- Ligne de statut décorative — édite ou supprime cette ligne librement -->
-    <p class="status"><span class="status-dot"></span> jacoballen.ca</p>
-  </section>
+    <section aria-labelledby="parrainage-title">
+      <h2 class="section-label" id="parrainage-title">Parrainage</h2>
+      <div class="links reveal-list">
+        <a class="card sponsor" href="/starlink">
+          <span class="card-icon" aria-hidden="true"><i class="fa-solid fa-satellite"></i></span>
+          <span class="card-text"><span class="card-title">Starlink</span><span class="card-subtitle">Un mois d’abonnement offert</span></span>
+          <span class="card-chevron" aria-hidden="true">›</span>
+        </a>
+      </div>
+    </section>
+  </main>
 
-  <!-- ============================================================ -->
-  <!-- LIENS PRINCIPAUX                                              -->
-  <!-- Pour AJOUTER une case : copie un bloc <a class="card">…</a>   -->
-  <!-- Pour ENLEVER une case : supprime le bloc en entier            -->
-  <!--                                                                -->
-  <!-- Astuce : les href pointent vers des chemins courts             -->
-  <!-- (/twitter, /instagram, …) qui sont redirigés vers tes vraies    -->
-  <!-- URLs par le fichier vercel.json. Ça donne des liens courts      -->
-  <!-- type jacoballen.ca/youtube ET un seul endroit à modifier.       -->
-  <!-- ============================================================ -->
- <nav class="links">
-
-  <a class="card" href="mailto:contact%40jacoballen.ca">
-    <span class="card-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 4h16v16H4z"/>
-        <path d="M4 7l8 6 8-6"/>
-      </svg>
-    </span>
-    <span class="card-text">
-      <span class="card-title">Me contacter par courriel</span>
-    </span>
-    <span class="card-chevron">›</span>
-  </a>
-
-  <a class="card" href="/github">
-    <span class="card-icon">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 .5A12 12 0 0 0 8.2 23.4c.6.1.8-.2.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.4 3.6 1.1.1-.8.4-1.4.8-1.7-2.7-.3-5.5-1.4-5.5-6.1 0-1.3.5-2.4 1.3-3.3-.1-.3-.6-1.6.1-3.2 0 0 1-.3 3.4 1.3a11.8 11.8 0 0 1 6.2 0c2.4-1.6 3.4-1.3 3.4-1.3.7 1.6.2 2.9.1 3.2.8.9 1.3 2 1.3 3.3 0 4.7-2.8 5.8-5.5 6.1.4.4.9 1.1.9 2.2v3.2c0 .4.2.7.8.6A12 12 0 0 0 12 .5Z"/>
-      </svg>
-    </span>
-    <span class="card-text">
-      <span class="card-title">GitHub</span>
-    </span>
-    <span class="card-chevron">›</span>
-  </a>
-
-  <a class="card" href="/x">
-    <span class="card-icon">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18.9 2h3.3l-7.2 8.2L23.4 22h-6.6l-5.2-6.8L5.6 22H2.3l7.7-8.8L1.6 2h6.8l4.7 6.2L18.9 2Zm-1.2 18h1.8L7.4 4h-1.9l12.2 16Z"/>
-      </svg>
-    </span>
-    <span class="card-text">
-      <span class="card-title">X / Twitter</span>
-    </span>
-    <span class="card-chevron">›</span>
-  </a>
-
-  <a class="card" href="/instagram">
-    <span class="card-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <rect x="3" y="3" width="18" height="18" rx="5"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
-      </svg>
-    </span>
-    <span class="card-text">
-      <span class="card-title">Instagram</span>
-    </span>
-    <span class="card-chevron">›</span>
-  </a>
-
-  <a class="card" href="/strava">
-    <span class="card-icon">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M15.4 2 9.8 13h3.3l2.3-4.5 2.3 4.5H21L15.4 2ZM9.2 14l-2.7 5.3H10L11.8 16l1.8 3.3h3.4L13 14H9.2Z"/>
-      </svg>
-    </span>
-    <span class="card-text">
-      <span class="card-title">Strava</span>
-    </span>
-    <span class="card-chevron">›</span>
-  </a>
-
-</nav>
-
-<!-- ============================================================ -->
-<!-- SECTION PARRAINAGES -->
-<!-- ============================================================ -->
-
-<p class="section-label">Parrainages</p>
-
-<nav class="links">
-
-  <a class="card sponsor" href="/starlink">
-    <span class="card-icon logo logo-starlink">S</span>
-    <span class="card-text">
-      <span class="card-title">Starlink</span>
-      <span class="card-subtitle">1 mois d'abonnement offert</span>
-    </span>
-    <span class="card-chevron">›</span>
-  </a>
-
-</nav>
-
-  <footer class="footer">
-    <p>JacobAllen.ca</p>
-    <p>// made in Québec 🍁</p>
-  </footer>
-
-</main>
-
-<!-- Vercel Web Analytics (statique, sans framework) -->
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-
-<!-- Vercel Speed Insights (statique, sans framework) -->
-<script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
-<script src="effects.js"></script>
-
+  <footer class="footer"><p>© 2026 Jacob Allen · Fait au Québec 🍁</p></footer>
+  <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments)};</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="effects.js"></script>
 </body>
 </html>
