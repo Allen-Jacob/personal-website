@@ -3,87 +3,130 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Jacob Allen — Informatique, réseaux et projets</title>
-  <meta name="description" content="Découvrez Jacob Allen, étudiant en technique informatique au Québec, ses projets, ses réseaux et ses liens essentiels.">
+  <title>Jacob Allen — Informatique, réseaux et plein air</title>
+  <meta name="description" content="Le portfolio de Jacob Allen : informatique, réseaux, auto-hébergement, sport et projets personnels au Québec.">
   <link rel="canonical" href="https://jacoballen.ca/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:title" content="Jacob Allen — Informatique, réseaux et plein air">
+  <meta property="og:description" content="Je construis, j’héberge et j’apprends — depuis le Québec.">
+  <meta property="og:url" content="https://jacoballen.ca/">
+  <meta property="og:image" content="https://jacoballen.ca/og.png">
+  <meta property="og:image:width" content="1731">
+  <meta property="og:image:height" content="909">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://jacoballen.ca/og.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" type="image/svg+xml">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23ff5b35'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='Arial' font-weight='700' fill='white'>J</text></svg>" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
-  <div class="bg-glow" aria-hidden="true"></div>
-  <div class="stars" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true"><span></span><span></span></div>
 
-  <header class="site-header">
-    <a href="/" class="header-name" aria-label="Jacob Allen — Accueil">Jacob Allen</a>
+  <header class="site-header shell">
+    <a href="/" class="brand" aria-label="Jacob Allen — Accueil"><span class="brand-mark">J</span><span>JACOB ALLEN</span></a>
     <nav aria-label="Navigation principale">
       <a href="/" aria-current="page">Accueil</a>
       <a href="/about">À propos</a>
       <a href="/matos">Matériel</a>
     </nav>
+    <a class="header-contact" href="mailto:contact@jacoballen.ca">Me contacter <span aria-hidden="true">↗</span></a>
   </header>
 
-  <main class="page" id="contenu">
-    <section class="profile home-profile">
-      <div class="avatar"><picture><source srcset="photo.webp" type="image/webp"><img src="photo.jpg" alt="Portrait de Jacob Allen" width="196" height="196" loading="eager" decoding="async" fetchpriority="high"></picture></div>
-      <p class="eyebrow">Bonjour, moi c’est</p>
-      <h1 class="name">Jacob Allen</h1>
-      <p class="bio">Étudiant en technique informatique, passionné par le sport et l'informatique.</p>
-      <p class="status"><span class="status-dot" aria-hidden="true"></span> Basé au Québec</p>
-      <div class="profile-actions">
-        <a class="button button-primary" href="/about">À propos</a>
-        <a class="button" href="mailto:contact@jacoballen.ca">Me contacter</a>
-      </div>
+  <main class="shell" id="contenu">
+    <section class="bento home-bento" aria-label="Présentation de Jacob Allen">
+      <article class="tile identity-card reveal">
+        <div class="identity-copy">
+          <p class="kicker">Profil / 01</p>
+          <h1>Jacob<br>Allen<span class="accent-dot">.</span></h1>
+          <p class="role">Étudiant en technique informatique</p>
+          <ul class="tags" aria-label="Centres d’intérêt">
+            <li>Réseaux</li><li>Homelab</li><li>Plein air</li>
+          </ul>
+        </div>
+        <picture class="portrait">
+          <source srcset="photo.webp" type="image/webp">
+          <img src="photo.jpg" alt="Portrait de Jacob Allen" width="640" height="640" fetchpriority="high">
+        </picture>
+        <span class="id-code" aria-hidden="true">JA / QC / 2026</span>
+      </article>
+
+      <article class="tile statement-card grid-surface reveal">
+        <p class="kicker">En ce moment / 02</p>
+        <div class="statement-copy">
+          <span class="availability"><i aria-hidden="true"></i> Disponible pour apprendre</span>
+          <h2>Je construis,<br>j’héberge,<br><em>j’apprends.</em></h2>
+          <p>Je transforme ma curiosité pour les réseaux et Linux en projets concrets — un service, un conteneur et une idée à la fois.</p>
+        </div>
+        <div class="orbit" aria-hidden="true"><span class="orbit-core"><i class="fa-solid fa-code"></i></span><i></i><i></i><i></i></div>
+      </article>
+
+      <a class="tile link-tile github-card reveal" href="/github" aria-label="Voir le GitHub de Jacob">
+        <span class="tile-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></span>
+        <span><b>GitHub</b><small>Projets &amp; dépôts</small></span>
+        <span class="arrow" aria-hidden="true">↗</span>
+        <span class="code-lines" aria-hidden="true">git push<br>docker compose up<br>ssh jacob@homelab</span>
+      </a>
+
+      <a class="tile link-tile strava-card reveal" href="/strava" aria-label="Voir les activités Strava de Jacob">
+        <span class="tile-icon"><i class="fa-brands fa-strava" aria-hidden="true"></i></span>
+        <span><b>Strava</b><small>Sorties &amp; entraînements</small></span>
+        <span class="arrow" aria-hidden="true">↗</span>
+        <span class="elevation" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      </a>
+
+      <a class="tile link-tile social-card reveal" href="/instagram" aria-label="Voir l’Instagram de Jacob">
+        <span class="tile-icon"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span>
+        <span><b>Insta</b><small>Mon réseaux social préféré</small></span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a class="tile link-tile social-card reveal" href="/x" aria-label="Voir le profil X de Jacob">
+        <span class="tile-icon"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></span>
+        <span><b>X</b><small>Veille &amp; idées</small></span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a class="tile about-link reveal" href="/about">
+        <p class="kicker">Mon parcours / 03</p>
+        <h2>Curieux par nature.<br><span>Technique par passion.</span></h2>
+        <p>Découvrir mon histoire, ce que j’apprends et ce qui m’anime loin des écrans.</p>
+        <span class="round-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <article class="tile quebec-card reveal">
+        <div>
+          <p class="kicker">Base / 04</p>
+          <h2>Québec, Canada</h2>
+          <p>Connecté au réseau.<br>Souvent dehors.</p>
+        </div>
+        <div class="map-mark" aria-hidden="true"><span>46.8° N</span></div>
+      </article>
+
+      <a class="tile setup-card reveal" href="/matos">
+        <div>
+          <p class="kicker">Setup / 05</p>
+          <h2>Les outils derrière mes projets.</h2>
+          <span class="text-link">Explorer mon matériel <b aria-hidden="true">→</b></span>
+        </div>
+        <div class="server-stack" aria-hidden="true"><i></i><i></i><i></i></div>
+      </a>
     </section>
 
-    <section aria-labelledby="liens-title">
-      <h2 class="section-label" id="liens-title">Retrouvez-moi</h2>
-      <div class="links reveal-list">
-        <a class="card" href="/github">
-          <span class="card-icon" aria-hidden="true"><i class="fa-brands fa-github"></i></span>
-          <span class="card-text"><span class="card-title">GitHub</span><span class="card-subtitle">Mes projets et mes dépôts GitHub</span></span>
-          <span class="card-chevron" aria-hidden="true">›</span>
-        </a>
-        <a class="card" href="/instagram">
-          <span class="card-icon" aria-hidden="true"><i class="fa-brands fa-instagram"></i></span>
-          <span class="card-text"><span class="card-title">Instagram</span><span class="card-subtitle">Mon compte Instagram</span></span>
-          <span class="card-chevron" aria-hidden="true">›</span>
-        </a>
-        <a class="card" href="/strava">
-          <span class="card-icon" aria-hidden="true"><i class="fa-brands fa-strava"></i></span>
-          <span class="card-text"><span class="card-title">Strava</span><span class="card-subtitle">Mes entraînements</span></span>
-          <span class="card-chevron" aria-hidden="true">›</span>
-        </a>
-          <a class="card" href="/x">
-          <span class="card-icon" aria-hidden="true"><i class="fa-brands fa-x-twitter"></i></span>
-          <span class="card-text"><span class="card-title">X (Twitter)</span><span class="card-subtitle">Mon compte Twitter. </span></span>
-          <span class="card-chevron" aria-hidden="true">›</span>
-        </a>
-      </div>
-    </section>
-
-    <section aria-labelledby="parrainage-title">
-      <h2 class="section-label" id="parrainage-title">Parrainage</h2>
-      <div class="links reveal-list">
-        <a class="card sponsor" href="/starlink">
-          <span class="card-icon" aria-hidden="true"><i class="fa-solid fa-satellite"></i></span>
-          <span class="card-text"><span class="card-title">Starlink</span><span class="card-subtitle">Un mois d’abonnement offert</span></span>
-          <span class="card-chevron" aria-hidden="true">›</span>
-        </a>
-        <a class="card sponsor" href="/racknerd">
-          <span class="card-icon" aria-hidden="true"><i class="fa-solid fa-server"></i></span>
-          <span class="card-text"><span class="card-title">RackNerd</span><span class="card-subtitle">Offre VPS pas cher</span></span>
-          <span class="card-chevron" aria-hidden="true">›</span>
-        </a>
+    <section class="referrals" aria-labelledby="referrals-title">
+      <div><p class="kicker">Bons plans / 06</p><h2 id="referrals-title">Mes liens de parrainage</h2></div>
+      <div class="referral-links">
+        <a href="/starlink"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i><span><b>Starlink</b><small>Un mois offert</small></span><b aria-hidden="true">↗</b></a>
+        <a href="/racknerd"><i class="fa-solid fa-server" aria-hidden="true"></i><span><b>RackNerd</b><small>VPS abordable</small></span><b aria-hidden="true">↗</b></a>
       </div>
     </section>
   </main>
 
-  <footer class="footer"><p>© 2026 Jacob Allen · Fait au Québec 🍁</p></footer>
+  <footer class="footer shell"><p>© 2026 Jacob Allen</p><p>Conçu avec curiosité au Québec <span aria-hidden="true">🍁</span></p><a href="mailto:contact@jacoballen.ca">contact@jacoballen.ca</a></footer>
   <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments)};</script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
