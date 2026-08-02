@@ -1,1 +1,14 @@
-(()=>{const e=matchMedia("(prefers-reduced-motion: reduce)").matches,t=matchMedia("(hover: hover) and (pointer: fine)").matches,n=matchMedia("(max-width: 460px)").matches?12:24;function o(){const t=document.querySelector(".stars");if(!t)return;const o=document.createDocumentFragment();for(let t=0;t<n;t++){const t=document.createElement("span");t.className="star",t.style.setProperty("--top",100*Math.random()+"%"),t.style.setProperty("--left",100*Math.random()+"%"),t.style.setProperty("--size",(1.4*Math.random()+.7).toFixed(2)+"px"),t.style.setProperty("--duration",e?"0s":(3*Math.random()+4).toFixed(2)+"s"),t.style.setProperty("--delay",(4*Math.random()).toFixed(2)+"s"),t.style.setProperty("--drift-x",(6*Math.random()-3).toFixed(1)+"px"),t.style.setProperty("--drift-y",(6*Math.random()-3).toFixed(1)+"px"),o.appendChild(t)}t.appendChild(o)}function i(){if(!t||e)return;const n=document.createElement("div");n.className="cursor-glow",n.setAttribute("aria-hidden","true"),document.body.appendChild(n);let o=0;addEventListener("pointermove",e=>{cancelAnimationFrame(o),o=requestAnimationFrame(()=>{n.style.transform=`translate3d(${e.clientX-110}px,${e.clientY-110}px,0)`,n.classList.add("is-visible")})},{passive:!0}),document.addEventListener("mouseleave",()=>n.classList.remove("is-visible"))}"loading"===document.readyState?document.addEventListener("DOMContentLoaded",()=>{o(),i()}):(o(),i())})();
+(() => {
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  if (finePointer && !reducedMotion) {
+    document.querySelectorAll(".tile, .equipment-card").forEach((card) => {
+      card.addEventListener("pointermove", (event) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty("--pointer-x", `${event.clientX - rect.left}px`);
+        card.style.setProperty("--pointer-y", `${event.clientY - rect.top}px`);
+      }, { passive: true });
+    });
+  }
+})();
