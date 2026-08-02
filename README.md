@@ -4,8 +4,13 @@ Site statique (HTML + CSS pur, zéro dépendance) prêt à déployer sur Vercel.
 
 ## Fichiers
 
-- `index.html` — le contenu de la page (profil + cases de liens)
-- `style.css` — les couleurs, polices, espacements
+- `index.html` — la page d’accueil et les liens essentiels
+- `about.html` — la présentation personnelle
+- `matos.html` — le matériel, regroupé par catégories
+- `404.html` — la page d’erreur personnalisée
+- `style.css` — les couleurs, composants et adaptations mobiles
+- `effects.js` — les étoiles et le halo pour les appareils avec souris
+- `sitemap.xml` et `robots.txt` — les fichiers d’indexation
 - `vercel.json` — les redirections d'URL courtes (ex. `jacoballen.ca/youtube`)
 - `README.md` — ce fichier
 
