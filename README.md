@@ -7,6 +7,7 @@ Site statique (HTML + CSS pur, zéro dépendance) prêt à déployer sur Vercel.
 - `index.html` — la page d’accueil et les liens essentiels
 - `about.html` — la présentation personnelle
 - `matos.html` — le matériel, regroupé par catégories
+- `mentions-legales.html` — les informations légales, l’hébergement et la confidentialité
 - `404.html` — la page d’erreur personnalisée
 - `style.css` — les couleurs, composants et adaptations mobiles
 - `effects.js` — les étoiles et le halo pour les appareils avec souris
