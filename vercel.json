@@ -1,4 +1,5 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
@@ -12,9 +13,9 @@
     { "source": "/racknerd", "destination": "https://my.racknerd.com/aff.php?aff=15552",                 "permanent": false }
   ],
   "rewrites": [
-    { "source": "/en", "destination": "/index.html" },
-    { "source": "/en/about", "destination": "/about.html" },
-    { "source": "/en/matos", "destination": "/matos.html" },
-    { "source": "/en/mentions-legales", "destination": "/mentions-legales.html" }
+    { "source": "/en", "destination": "/" },
+    { "source": "/en/about", "destination": "/about" },
+    { "source": "/en/matos", "destination": "/matos" },
+    { "source": "/en/mentions-legales", "destination": "/mentions-legales" }
   ]
 }
