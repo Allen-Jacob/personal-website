@@ -23,6 +23,8 @@ img{max-width:100%}
 .site-header nav a,.header-contact{position:relative;color:var(--muted);font-size:14px;font-weight:600;text-decoration:none;transition:color .2s ease}
 .site-header nav a:hover,.site-header nav a[aria-current=page],.header-contact:hover{color:var(--text)}
 .site-header nav a[aria-current=page]::after{content:"";position:absolute;right:0;bottom:-9px;left:0;height:2px;border-radius:2px;background:var(--orange)}
+.language-switch{width:38px;height:38px;display:grid;flex:none;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--muted);font-family:Manrope,sans-serif;font-size:11px;font-weight:800;letter-spacing:.08em;text-decoration:none;transition:border-color .2s,color .2s,background .2s}
+.language-switch:hover{border-color:var(--orange);background:rgba(255,91,53,.08);color:var(--text)}
 .header-contact{padding:11px 15px;border:1px solid var(--line);border-radius:99px;color:var(--text)}
 .contact-short{display:none}
 .bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:112px;gap:14px}

@@ -11,6 +11,7 @@ Site statique (HTML + CSS pur, zéro dépendance) prêt à déployer sur Vercel.
 - `404.html` — la page d’erreur personnalisée
 - `style.css` — les couleurs, composants et adaptations mobiles
 - `effects.js` — les étoiles et le halo pour les appareils avec souris
+- `i18n.js` — toutes les traductions anglaises, les métadonnées et la navigation bilingue
 - `sitemap.xml` et `robots.txt` — les fichiers d’indexation
 - `vercel.json` — les redirections d'URL courtes (ex. `jacoballen.ca/youtube`)
 - `README.md` — ce fichier
@@ -42,6 +43,17 @@ Dans `index.html`, chaque case est un bloc du genre :
   `<span class="card-subtitle">Ton texte</span>` juste après `card-title`, et mets la classe `card sponsor` sur le `<a>`.
 
 Tu n'as pas besoin de toucher au CSS pour ajouter/enlever des cases — le style s'applique automatiquement.
+
+## Gérer le français et l’anglais
+
+Le français reste écrit directement dans les fichiers HTML. Les traductions anglaises sont regroupées dans
+le fichier `i18n.js`, dans l’objet `translations`. Pour modifier un texte anglais, retrouve simplement sa
+version française à gauche, puis change la traduction à droite.
+
+Les pages anglaises utilisent les mêmes fichiers et sont accessibles sous `/en`, `/en/about`, `/en/matos`
+et `/en/mentions-legales`. Le sélecteur `FR` / `EN` conserve la page actuelle lorsqu’on change de langue.
+Lorsqu’une nouvelle page bilingue est ajoutée, ajoute son chemin dans `pagePaths`, sa traduction dans
+`translations`, ses métadonnées dans `metadata`, puis sa route anglaise dans `vercel.json`.
 
 ## Gérer les liens courts (jacoballen.ca/youtube → ta vraie URL)
 
