@@ -6,9 +6,7 @@
   <meta name="description" content="Le parcours de Jacob Allen, ses apprentissages en informatique, son homelab et ses passions en plein air.">
   <link rel="canonical" href="https://jacoballen.ca/about">
   <meta property="og:title" content="À propos — Jacob Allen"><meta property="og:description" content="Curieux par nature, technique par passion."><meta property="og:image" content="https://jacoballen.ca/og.png"><meta name="twitter:card" content="summary_large_image">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23ff5b35'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='Arial' font-weight='700' fill='white'>J</text></svg>" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -17,7 +15,7 @@
   <header class="site-header shell">
     <a href="/" class="brand" aria-label="Jacob Allen — Accueil"><span class="brand-mark">J</span><span>JACOB ALLEN</span></a>
     <nav aria-label="Navigation principale"><a href="/">Accueil</a><a href="/about" aria-current="page">À propos</a><a href="/matos">Matériel</a></nav>
-    <a class="header-contact" href="mailto:contact@jacoballen.ca">Me contacter <span aria-hidden="true">↗</span></a>
+    <a class="header-contact" href="mailto:contact@jacoballen.ca"><span class="contact-label">Me contacter</span><span class="contact-short">Contact</span> <span aria-hidden="true">↗</span></a>
   </header>
   <main class="shell" id="contenu">
     <section class="page-hero">
@@ -26,16 +24,16 @@
     </section>
 
     <section class="content-bento" aria-label="Le parcours de Jacob">
-      <article class="content-card reveal"><p class="kicker">Le parcours / 02</p><h2>De la curiosité au métier</h2><p>Je vis au Québec et j’entre en <strong>technique informatique</strong> au cégep. Mon objectif est de poursuivre vers l’ingénierie informatique grâce à un parcours DEC–BAC qui me permettra d’apprendre le métier de façon concrète.</p><p>Ce qui m’attire dans ce domaine, ce n’est pas seulement la technologie : c’est le plaisir de chercher, de résoudre un problème et de comprendre tout ce qui se passe derrière l’écran.</p></article>
+      <article class="content-card reveal"><p class="kicker">Le parcours / 02</p><h2>De la curiosité au métier</h2><p>Je vis au Québec et j’entre en <strong>techniques de l’informatique</strong> au cégep. Mon objectif est de poursuivre vers l’ingénierie informatique grâce à un parcours DEC–BAC qui me permettra d’apprendre le métier de façon concrète.</p><p>Ce qui m’attire dans ce domaine, ce n’est pas seulement la technologie : c’est le plaisir de chercher, de résoudre un problème et de comprendre tout ce qui se passe derrière l’écran.</p></article>
       <article class="content-card cream reveal"><p class="kicker">Le labo / 03</p><h2>Un réseau à moi pour expérimenter</h2><p>Mon homelab est mon terrain de jeu. J’y explore <strong>Linux, Docker, les VPN, la virtualisation</strong> et différents services auto-hébergés.</p><p>J’essaie aussi de reprendre le contrôle de mes données et de moins dépendre des grandes plateformes — même si Apple garde encore une bonne place dans mon quotidien.</p></article>
       <article class="content-card wide reveal"><p class="kicker">En apprentissage / 04</p><h2>Ce que j’explore maintenant</h2><div class="learning-list">
-        <div class="learning-item"><i class="fa-solid fa-network-wired" aria-hidden="true"></i><h3>Réseaux</h3><p>UniFi, Omada, NetBird et les architectures qui relient tout.</p></div>
-        <div class="learning-item"><i class="fa-solid fa-server" aria-hidden="true"></i><h3>Auto-hébergement</h3><p>Docker, Linux et déploiement de services personnels.</p></div>
-        <div class="learning-item"><i class="fa-solid fa-code" aria-hidden="true"></i><h3>Développement</h3><p>Des projets pratiques — notamment le site que vous consultez.</p></div>
+        <div class="learning-item"><span class="ui-icon" aria-hidden="true">⌘</span><h3>Réseaux</h3><p>UniFi, Omada, NetBird et les architectures qui relient tout.</p></div>
+        <div class="learning-item"><span class="ui-icon" aria-hidden="true">▤</span><h3>Auto-hébergement</h3><p>Docker, Linux et déploiement de services personnels.</p></div>
+        <div class="learning-item"><span class="ui-icon" aria-hidden="true">&lt;/&gt;</span><h3>Développement</h3><p>Des projets pratiques — notamment le site que vous consultez.</p></div>
       </div></article>
-      <article class="content-card orange wide reveal"><p class="kicker">Hors ligne / 05</p><h2>Quand je quitte les écrans</h2><p>Je recharge mes batteries en vélo de montagne, en ski et à la course. Je découvre aussi la photographie, avec l’envie de mieux observer ce qui m’entoure — et peut-être bientôt avec un véritable appareil photo.</p><div class="sport-icons" aria-hidden="true"><i class="fa-solid fa-bicycle"></i><i class="fa-solid fa-person-skiing"></i><i class="fa-solid fa-camera"></i></div></article>
+      <article class="content-card orange wide reveal"><p class="kicker">Hors ligne / 05</p><h2>Quand je quitte les écrans</h2><p>Je recharge mes batteries en vélo de montagne, en ski et à la course. Je découvre aussi la photographie, avec l’envie de mieux observer ce qui m’entoure — et peut-être bientôt avec un véritable appareil photo.</p><div class="sport-icons" aria-hidden="true"><span>🚲</span><span>⛷</span><span>◉</span></div></article>
     </section>
-    <div class="page-actions"><a class="button button-primary" href="/github"><i class="fa-brands fa-github" aria-hidden="true"></i> Voir mon GitHub</a><a class="button" href="/">← Retour à l’accueil</a></div>
+    <div class="page-actions"><a class="button button-primary" href="/github"><img src="assets/icons/github.svg" alt="" width="16" height="16"> Voir mon GitHub</a><a class="button" href="/">← Retour à l’accueil</a></div>
   </main>
   <footer class="footer shell"><p>© 2026 Jacob Allen</p><p>Conçu avec curiosité au Québec <span aria-hidden="true">🍁</span></p><div class="footer-links"><a href="/mentions-legales">Mentions légales</a><a href="mailto:contact@jacoballen.ca">Contact</a></div></footer>
   <script defer src="effects.js"></script>
