@@ -97,12 +97,9 @@ Les données apparaissent après quelques visites réelles sur le site.
 
 1. Crée un projet gratuit sur Supabase.
 2. Ouvre **SQL Editor**, colle le contenu de `supabase/schema.sql`, puis clique sur **Run**.
-3. Dans Vercel, ouvre **Settings → Environment Variables** et ajoute :
-   - `SUPABASE_URL` : l’URL du projet Supabase;
-   - `SUPABASE_SECRET_KEY` : une clé secrète `sb_secret_...` créée dans **Settings → API Keys**.
-4. Redéploie le site.
+3. Redéploie le site.
 
-La clé secrète reste uniquement dans la fonction serveur et ne doit jamais être placée dans un fichier JavaScript envoyé au navigateur. L’ancienne variable `SUPABASE_SERVICE_ROLE_KEY` reste acceptée pour un projet qui utilise encore les clés héritées. Chaque navigateur reçoit un identifiant aléatoire conservé dans son stockage local afin d’éviter de compter plusieurs fois le même clic.
+L’API utilise une clé Supabase publiable avec deux fonctions SQL à privilèges limités. La table reste protégée par RLS et ne peut pas être lue ou modifiée directement. Chaque navigateur reçoit un identifiant aléatoire conservé dans son stockage local afin d’éviter de compter plusieurs fois le même clic.
 
 ## Personnaliser l'avatar
 
