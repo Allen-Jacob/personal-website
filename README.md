@@ -12,6 +12,8 @@ Site statique (HTML + CSS pur, zéro dépendance) prêt à déployer sur Vercel.
 - `style.css` — les couleurs, composants et adaptations mobiles
 - `effects.js` — les étoiles et le halo pour les appareils avec souris
 - `i18n.js` — toutes les traductions anglaises, les métadonnées et la navigation bilingue
+- `likes.js` et `api/likes.js` — le bouton J’aime et son endpoint Vercel sécurisé
+- `supabase/schema.sql` — la table Supabase à créer une seule fois
 - `sitemap.xml` et `robots.txt` — les fichiers d’indexation
 - `vercel.json` — les redirections d'URL courtes (ex. `jacoballen.ca/youtube`)
 - `README.md` — ce fichier
@@ -90,6 +92,17 @@ Pour qu'ils fonctionnent, il faut juste les **activer côté dashboard** (aucun 
 4. Redéploie une fois si les onglets viennent d'être activés.
 
 Les données apparaissent après quelques visites réelles sur le site.
+
+## Activer les J’aime avec Supabase
+
+1. Crée un projet gratuit sur Supabase.
+2. Ouvre **SQL Editor**, colle le contenu de `supabase/schema.sql`, puis clique sur **Run**.
+3. Dans Vercel, ouvre **Settings → Environment Variables** et ajoute :
+   - `SUPABASE_URL` : l’URL du projet Supabase;
+   - `SUPABASE_SECRET_KEY` : une clé secrète `sb_secret_...` créée dans **Settings → API Keys**.
+4. Redéploie le site.
+
+La clé secrète reste uniquement dans la fonction serveur et ne doit jamais être placée dans un fichier JavaScript envoyé au navigateur. L’ancienne variable `SUPABASE_SERVICE_ROLE_KEY` reste acceptée pour un projet qui utilise encore les clés héritées. Chaque navigateur reçoit un identifiant aléatoire conservé dans son stockage local afin d’éviter de compter plusieurs fois le même clic.
 
 ## Personnaliser l'avatar
 

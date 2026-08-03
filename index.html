@@ -181,13 +181,34 @@
         <a href="/racknerd" rel="sponsored nofollow"><span class="referral-icon" aria-hidden="true">▤</span><span><b>RackNerd</b><small>VPS · lien de parrainage</small></span><b aria-hidden="true">↗</b></a>
       </div>
     </section>
+
+    <section class="like-panel" aria-labelledby="like-title">
+      <div>
+        <p class="kicker">Un petit signe / 08</p>
+        <h2 id="like-title">Vous aimez le site&nbsp;?</h2>
+        <p class="like-note">Un clic suffit — aucun compte nécessaire.</p>
+      </div>
+      <button class="like-button" type="button" data-like-button aria-pressed="false" disabled>
+        <span class="like-heart" aria-hidden="true">♥</span>
+        <span data-like-label>J’aime</span>
+        <strong data-like-count aria-label="Nombre de mentions J’aime">—</strong>
+      </button>
+      <p class="like-status" data-like-status role="status" aria-live="polite"></p>
+    </section>
   </main>
 
   <footer class="footer shell"><p>© 2026 Jacob Allen</p><p>Conçu avec curiosité au Québec <span aria-hidden="true">🍁</span></p><div class="footer-links"><a href="/mentions-legales">Mentions légales</a><a href="mailto:contact@jacoballen.ca">Contact</a></div></footer>
-  <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments)};</script>
-  <script defer src="/_vercel/insights/script.js"></script>
-  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script>
+    window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};
+    window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments)};
+    if(["jacoballen.ca","www.jacoballen.ca"].includes(location.hostname)){
+      ["/_vercel/insights/script.js","/_vercel/speed-insights/script.js"].forEach(function(src){
+        var script=document.createElement("script");script.src=src;script.defer=true;document.head.appendChild(script);
+      });
+    }
+  </script>
   <script defer src="i18n.js"></script>
+  <script defer src="likes.js"></script>
   <script defer src="effects.js"></script>
 </body>
 </html>
