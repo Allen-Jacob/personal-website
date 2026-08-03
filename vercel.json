@@ -10,5 +10,11 @@
     { "source": "/email", "destination": "mailto:contact%40jacoballen.ca",        "permanent": false },
     { "source": "/starlink", "destination": "https://starlink.com/residential?referral=RC-DF-12693608-83528-7&app_source=share",                 "permanent": false },
     { "source": "/racknerd", "destination": "https://my.racknerd.com/aff.php?aff=15552",                 "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/en", "destination": "/index.html" },
+    { "source": "/en/about", "destination": "/about.html" },
+    { "source": "/en/matos", "destination": "/matos.html" },
+    { "source": "/en/mentions-legales", "destination": "/mentions-legales.html" }
   ]
 }
