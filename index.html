@@ -16,10 +16,8 @@
   <meta property="og:image:height" content="909">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://jacoballen.ca/og.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23ff5b35'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='Arial' font-weight='700' fill='white'>J</text></svg>" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -34,7 +32,7 @@
       <a href="/about">À propos</a>
       <a href="/matos">Matériel</a>
     </nav>
-    <a class="header-contact" href="mailto:contact@jacoballen.ca">Me contacter <span aria-hidden="true">↗</span></a>
+    <a class="header-contact" href="mailto:contact@jacoballen.ca"><span class="contact-label">Me contacter</span><span class="contact-short">Contact</span> <span aria-hidden="true">↗</span></a>
   </header>
 
   <main class="shell" id="contenu">
@@ -43,14 +41,15 @@
         <div class="identity-copy">
           <p class="kicker">Profil / 01</p>
           <h1>Jacob<br>Allen<span class="accent-dot">.</span></h1>
-          <p class="role">Étudiant en technique informatique</p>
+          <p class="role">Étudiant en techniques de l’informatique</p>
           <ul class="tags" aria-label="Centres d’intérêt">
             <li>Réseaux</li><li>Homelab</li><li>Plein air</li>
           </ul>
         </div>
         <picture class="portrait">
-          <source srcset="photo.webp" type="image/webp">
-          <img src="photo.jpg" alt="Portrait de Jacob Allen" width="640" height="640" fetchpriority="high">
+          <source srcset="assets/portrait/jacob-800.avif 800w, assets/portrait/jacob-1200.avif 1200w" sizes="(max-width: 700px) 100vw, 460px" type="image/avif">
+          <source srcset="assets/portrait/jacob-800.webp 800w, assets/portrait/jacob-1200.webp 1200w" sizes="(max-width: 700px) 100vw, 460px" type="image/webp">
+          <img src="assets/portrait/jacob-800.jpg" srcset="assets/portrait/jacob-800.jpg 800w, assets/portrait/jacob-1200.jpg 1200w" sizes="(max-width: 700px) 100vw, 460px" alt="Jacob Allen devant un paysage de montagne et de mer" width="1200" height="1200" fetchpriority="high">
         </picture>
         <span class="id-code" aria-hidden="true">JA / QC / 2026</span>
       </article>
@@ -60,34 +59,35 @@
         <div class="statement-copy">
           <span class="availability"><i aria-hidden="true"></i> CANADA ; Québec</span>
           <h2>Je construis,<br>j’héberge,<br><em>j’apprends.</em></h2>
-          <p>Je transforme ma curiosité pour les réseaux et Linux en projets concrets - un service, un conteneur et une idée à la fois.</p>
+          <p>Je transforme ma curiosité pour les réseaux et Linux en projets concrets — un service, un conteneur et une idée à la fois.</p>
+          <a class="statement-cta" href="#projets">Voir mes projets <span aria-hidden="true">↓</span></a>
         </div>
-        <div class="orbit" aria-hidden="true"><span class="orbit-core"><i class="fa-solid fa-code"></i></span><i></i><i></i><i></i></div>
+        <div class="orbit" aria-hidden="true"><span class="orbit-core">&lt;/&gt;</span><i></i><i></i><i></i></div>
       </article>
 
       <a class="tile link-tile github-card reveal" href="/github" aria-label="Voir le GitHub de Jacob">
-        <span class="tile-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></span>
+        <span class="tile-icon"><img src="assets/icons/github.svg" alt="" width="22" height="22"></span>
         <span><b>GitHub</b><small>Projets &amp; dépôts</small></span>
         <span class="arrow" aria-hidden="true">↗</span>
         <span class="code-lines" aria-hidden="true">git push<br>docker compose up<br>ssh jacob@homelab</span>
       </a>
 
       <a class="tile link-tile strava-card reveal" href="/strava" aria-label="Voir les activités Strava de Jacob">
-        <span class="tile-icon"><i class="fa-brands fa-strava" aria-hidden="true"></i></span>
-        <span><b>Strava</b><small>Sorties &amp; entraînements</small></span>
+        <span class="tile-icon"><img src="assets/icons/strava.svg" alt="" width="22" height="22"></span>
+        <span><b>Strava</b><small>Profil — connexion parfois requise</small></span>
         <span class="arrow" aria-hidden="true">↗</span>
         <span class="elevation" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
       </a>
 
       <a class="tile link-tile social-card instagram-card reveal" href="/instagram" aria-label="Voir l’Instagram de Jacob">
-        <span class="tile-icon"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span>
+        <span class="tile-icon"><img src="assets/icons/instagram.svg" alt="" width="24" height="24"></span>
         <span><b>Instagram</b><small>Mon réseau social préféré</small></span>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
       <a class="tile link-tile social-card x-card reveal" href="/x" aria-label="Voir le profil X de Jacob">
-        <span class="tile-icon"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></span>
-        <span><b>X</b><small>Veille &amp; idées</small></span>
+        <span class="tile-icon"><img src="assets/icons/x.svg" alt="" width="22" height="22"></span>
+        <span><b>Jacob Allen sur X</b><small>Veille &amp; idées</small></span>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
@@ -117,11 +117,62 @@
       </a>
     </section>
 
+    <!-- <section class="projects" id="projets" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <div><p class="kicker">Projets sélectionnés / 06</p><h2 id="projects-title">Des idées devenues concrètes.</h2></div>
+        <p>Quelques projets publics qui montrent comment j’apprends : en construisant, en déployant et en améliorant.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card reveal">
+          <picture class="project-shot">
+            <source srcset="assets/projects/site.avif" type="image/avif">
+            <source srcset="assets/projects/site.webp" type="image/webp">
+            <img src="assets/projects/site.png" alt="Aperçu du portfolio jacoballen.ca" width="1280" height="720" loading="lazy">
+          </picture>
+          <div class="project-copy">
+            <div class="project-title-row"><div><p class="kicker">Portfolio personnel</p><h3>jacoballen.ca</h3></div><span class="project-status">En ligne</span></div>
+            <p><strong>Problème.</strong> Réunir mon parcours, mes projets et mes liens dans un site rapide qui me ressemble.</p>
+            <p><strong>Résultat.</strong> Un portfolio statique responsive avec SEO, aperçu social et mesure de performance.</p>
+            <ul class="project-tech" aria-label="Technologies"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Vercel</li></ul>
+            <a class="project-link" href="https://github.com/Allen-Jacob/personal-website" target="_blank" rel="noopener noreferrer">Voir le dépôt GitHub <span aria-hidden="true">↗</span></a>
+          </div> -->
+        <!-- </article>
+        <article class="project-card reveal">
+          <picture class="project-shot">
+            <source srcset="assets/projects/blog-builder.avif" type="image/avif">
+            <source srcset="assets/projects/blog-builder.webp" type="image/webp">
+            <img src="assets/projects/blog-builder.png" alt="Interface du générateur d’articles de blog" width="1280" height="720" loading="lazy">
+          </picture>
+          <div class="project-copy">
+            <div class="project-title-row"><div><p class="kicker">Outil de publication</p><h3>Blog Builder</h3></div><span class="project-status">Public</span></div>
+            <p><strong>Problème.</strong> Éviter de répéter à la main la structure HTML de chaque article.</p>
+            <p><strong>Résultat.</strong> Un éditeur Markdown avec aperçu en direct, sommaire automatique, sauvegarde locale et export HTML.</p>
+            <ul class="project-tech" aria-label="Technologies"><li>JavaScript</li><li>Markdown</li><li>Docker</li><li>Nginx</li></ul>
+            <a class="project-link" href="https://github.com/Allen-Jacob/blog-builder" target="_blank" rel="noopener noreferrer">Voir le dépôt GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="project-card reveal">
+          <picture class="project-shot">
+            <source srcset="assets/projects/arcade-games.avif" type="image/avif">
+            <source srcset="assets/projects/arcade-games.webp" type="image/webp">
+            <img src="assets/projects/arcade-games.png" alt="Accueil de la plateforme Arcade Games" width="1280" height="720" loading="lazy">
+          </picture>
+          <div class="project-copy">
+            <div class="project-title-row"><div><p class="kicker">Fork étendu</p><h3>Arcade Games</h3></div><span class="project-status">4 jeux</span></div>
+            <p><strong>Problème.</strong> Regrouper plusieurs jeux web et conserver leurs meilleurs scores.</p>
+            <p><strong>Résultat.</strong> Quatre jeux, une API REST, des classements par jeu et des métriques Prometheus.</p>
+            <ul class="project-tech" aria-label="Technologies"><li>Express</li><li>MongoDB</li><li>JavaScript</li><li>Prometheus</li></ul>
+            <a class="project-link" href="https://github.com/Allen-Jacob/Games" target="_blank" rel="noopener noreferrer">Voir le dépôt GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div> -->
+    </section>
+
     <section class="referrals" aria-labelledby="referrals-title">
-      <div><p class="kicker">Bons plans / 06</p><h2 id="referrals-title">Mes liens de parrainage</h2></div>
+      <div><p class="kicker">Bons plans / 07</p><h2 id="referrals-title">Mes liens de parrainage</h2><p class="referral-note">Je peux recevoir un avantage si vous passez par ces liens, sans coût supplémentaire pour vous.</p></div>
       <div class="referral-links">
-        <a href="/starlink"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i><span><b>Starlink</b><small>Un mois offert</small></span><b aria-hidden="true">↗</b></a>
-        <a href="/racknerd"><i class="fa-solid fa-server" aria-hidden="true"></i><span><b>RackNerd</b><small>VPS abordable</small></span><b aria-hidden="true">↗</b></a>
+        <a href="/starlink" rel="sponsored nofollow"><span class="referral-icon" aria-hidden="true">⌁</span><span><b>Starlink</b><small>Un mois offert · lien de parrainage</small></span><b aria-hidden="true">↗</b></a>
+        <a href="/racknerd" rel="sponsored nofollow"><span class="referral-icon" aria-hidden="true">▤</span><span><b>RackNerd</b><small>VPS · lien de parrainage</small></span><b aria-hidden="true">↗</b></a>
       </div>
     </section>
   </main>
