@@ -80,7 +80,7 @@
 
       <a class="tile link-tile strava-card reveal" href="/strava" aria-label="Voir les activités Strava de Jacob">
         <span class="tile-icon"><img src="assets/icons/strava.svg" alt="" width="22" height="22"></span>
-        <span><b>Strava</b><small>Profil — connexion parfois requise</small></span>
+        <span><b>Strava</b><small>Profil - connexion parfois requise</small></span>
         <span class="arrow" aria-hidden="true">↗</span>
         <span class="elevation" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
       </a>
@@ -110,7 +110,9 @@
           <h2>Québec, Canada</h2>
           <p>Connecté au réseau.<br>Souvent dehors.</p>
         </div>
-        <div class="map-mark" aria-hidden="true"><span>46.8° N</span></div>
+        <button class="map-mark" type="button" data-compass aria-label="Faire tourner la boussole du Québec">
+          <span>46.8° N</span><i class="compass-needle" aria-hidden="true"></i><small>Glisser</small>
+        </button>
       </article>
 
       <a class="tile setup-card reveal" href="/matos">
@@ -174,7 +176,7 @@
       </div> -->
     </section>
 
-    <section class="referrals" aria-labelledby="referrals-title">
+    <section class="referrals reveal" aria-labelledby="referrals-title">
       <div><p class="kicker">Bons plans / 07</p><h2 id="referrals-title">Mes liens de parrainage</h2><p class="referral-note">Je peux recevoir un avantage si vous passez par ces liens, sans coût supplémentaire pour vous.</p></div>
       <div class="referral-links">
         <a href="/starlink" rel="sponsored nofollow"><span class="referral-icon" aria-hidden="true">⌁</span><span><b>Starlink</b><small>Un mois offert · lien de parrainage</small></span><b aria-hidden="true">↗</b></a>
@@ -182,7 +184,7 @@
       </div>
     </section>
 
-    <section class="like-panel" aria-labelledby="like-title">
+    <section class="like-panel reveal" aria-labelledby="like-title">
       <div>
         <p class="kicker">Un petit signe / 08</p>
         <h2 id="like-title">Vous aimez le site&nbsp;?</h2>

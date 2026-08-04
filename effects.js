@@ -2,6 +2,100 @@
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
 
+  function initializeRevealAnimations() {
+    if (reducedMotion || !("IntersectionObserver" in window)) return;
+
+    const elements = [...document.querySelectorAll(".reveal")];
+    if (!elements.length) return;
+
+    document.documentElement.classList.add("js-motion");
+
+    const orderByParent = new Map();
+    elements.forEach((element) => {
+      const order = orderByParent.get(element.parentElement) || 0;
+      element.style.setProperty("--reveal-delay", `${Math.min(order * 65, 390)}ms`);
+      orderByParent.set(element.parentElement, order + 1);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -8%", threshold: 0.08 });
+
+    elements.forEach((element) => observer.observe(element));
+  }
+
+  initializeRevealAnimations();
+
+  function initializeCompass() {
+    const compass = document.querySelector("[data-compass]");
+    if (!compass) return;
+
+    let angle = 0;
+    let dragging = false;
+    let moved = false;
+    let lastPointerAngle = 0;
+
+    const normalizeAngle = (value) => ((value % 360) + 360) % 360;
+    const pointerAngle = (event) => {
+      const rect = compass.getBoundingClientRect();
+      return Math.atan2(event.clientY - (rect.top + rect.height / 2), event.clientX - (rect.left + rect.width / 2)) * 180 / Math.PI + 90;
+    };
+    const updateCompass = (nextAngle) => {
+      angle = normalizeAngle(nextAngle);
+      compass.style.setProperty("--compass-angle", `${angle}deg`);
+      const roundedAngle = Math.round(angle) % 360;
+      compass.setAttribute("aria-label", document.documentElement.lang === "en"
+        ? `Québec compass, ${roundedAngle} degrees. Drag or use the arrow keys to rotate it.`
+        : `Boussole du Québec, ${roundedAngle} degrés. Glissez ou utilisez les flèches pour la tourner.`);
+    };
+    const endDrag = (event, rotateOnTap) => {
+      if (!dragging) return;
+      dragging = false;
+      compass.classList.remove("is-dragging");
+      if (compass.hasPointerCapture(event.pointerId)) compass.releasePointerCapture(event.pointerId);
+      if (rotateOnTap && !moved) updateCompass(angle + 45);
+    };
+
+    compass.addEventListener("pointerdown", (event) => {
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+      event.preventDefault();
+      dragging = true;
+      moved = false;
+      lastPointerAngle = pointerAngle(event);
+      compass.setPointerCapture(event.pointerId);
+      compass.classList.add("is-dragging");
+    });
+    compass.addEventListener("pointermove", (event) => {
+      if (!dragging) return;
+      const currentPointerAngle = pointerAngle(event);
+      let delta = currentPointerAngle - lastPointerAngle;
+      if (delta > 180) delta -= 360;
+      if (delta < -180) delta += 360;
+      if (Math.abs(delta) > 2) moved = true;
+      updateCompass(angle + delta);
+      lastPointerAngle = currentPointerAngle;
+    });
+    compass.addEventListener("pointerup", (event) => endDrag(event, true));
+    compass.addEventListener("pointercancel", (event) => endDrag(event, false));
+    compass.addEventListener("click", (event) => {
+      if (event.detail === 0) updateCompass(angle + 45);
+    });
+    compass.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home"].includes(event.key)) return;
+      event.preventDefault();
+      if (event.key === "Home") updateCompass(0);
+      else updateCompass(angle + (["ArrowRight", "ArrowUp"].includes(event.key) ? 15 : -15));
+    });
+
+    updateCompass(0);
+  }
+
+  initializeCompass();
+
   function adaptLinksForLiveServer() {
     const localHosts = new Set(["localhost", "127.0.0.1", "::1"]);
     const port = Number(location.port);
@@ -102,6 +196,30 @@
 
       card.addEventListener("pointerleave", () => {
         cancelAnimationFrame(frame);
+      }, { passive: true });
+    });
+
+    document.querySelectorAll("[data-tilt]").forEach((card) => {
+      let frame = 0;
+
+      card.addEventListener("pointermove", (event) => {
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() => {
+          card.style.transform = `perspective(900px) rotateX(${-y * 2.5}deg) rotateY(${x * 3.5}deg) translateY(-2px)`;
+          card.style.setProperty("--orbit-shift-x", `${x * 14}px`);
+          card.style.setProperty("--orbit-shift-y", `${y * 14}px`);
+        });
+      }, { passive: true });
+
+      card.addEventListener("pointerleave", () => {
+        cancelAnimationFrame(frame);
+        card.style.removeProperty("transform");
+        card.style.setProperty("--orbit-shift-x", "0px");
+        card.style.setProperty("--orbit-shift-y", "0px");
       }, { passive: true });
     });
   }
